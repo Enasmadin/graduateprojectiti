@@ -47,6 +47,7 @@ class ClientController extends Controller
             "phone_number" => 'required|numeric|digits:11',
 
         ]);
+
         $client = new Client(request()->all());
         $client->user_id = Auth::user()->id;
         $client->save();

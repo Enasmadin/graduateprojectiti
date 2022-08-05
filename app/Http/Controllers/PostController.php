@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -97,8 +98,18 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $userPosts = $post->user->posts->take(3);
+        $catPostId = $post->product->category->id;
+        $posts = Post::all();
+        // dd($posts);
+        // $test = $posts->products->where('category_id', $catPostId);
 
-        return view("posts.show", ["post" => $post]);
+        $favs = Wishlist::all();
+        return view("posts.show", [
+            "post" => $post,
+            "UserPosts" => $userPosts,
+            "favs" => $favs
+        ]);
     }
 
 
