@@ -130,6 +130,14 @@
                                 </a>
 
                             @endauthDelivery
+
+                            @if (auth()->user()->is_admin == '1')
+
+                            <a class="nav-item nav-link" href="{{route('admin.products.index')}}" role="button"
+                            >
+                            لوحة التحكم
+                        </a>
+                        @endif
                         @endauth
                     </ul>
 
