@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="utf-8">
@@ -18,9 +18,9 @@
         <!--=================================
  preloader -->
 
-        <div id="pre-loader">
+        {{-- <div id="pre-loader">
             <img src="{{ URL::asset('assets/images/pre-loader/loader-01.svg') }}" alt="">
-        </div>
+        </div> --}}
 
         <!--=================================
  preloader -->
@@ -41,8 +41,7 @@
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}" class="default-color">{{trans('main_trans.Dashboard')}}</a></li>
-                <li class="breadcrumb-item active">@yield('PageTitle')</li>
+
             </ol>
         </div>
     </div>

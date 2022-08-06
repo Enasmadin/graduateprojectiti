@@ -94,9 +94,10 @@ class AdminClientController extends Controller
         $request->validate([
             "name" => 'required|max:100|string',
             "adress" => 'required|max:255|string',
-            "phone_number" => 'required|numeric',
+            "phone_number" => 'required|numeric|min:10',
 
         ]);
+        // dd($request->all());
         $client->update($request->all());
         return redirect()->route('admin.clients.index');
     }

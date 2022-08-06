@@ -19,6 +19,8 @@ class AdminProductController extends Controller
      */
     public function index()
     {
+
+        // dd(auth()->user()->is_admin);
         $products = Product::all();
         $users = User::where('role', 'vendor')->get();
         $cats = Category::all();
@@ -49,10 +51,9 @@ class AdminProductController extends Controller
     {
         $request->validate([
             'name' => ['required', 'min:3', 'max:255'],
-            'price' => ['required', 'numeric'],
-            'weight' => ['numeric'],
-            'quantity' => ['required', 'numeric'],
-            'quantity' => ['required'],
+            'price' => ['required', 'numeric', 'min:1'],
+            'weight' => ['nullable', 'numeric', 'min:1'],
+            'quantity' => ['required', 'numeric', 'min:1'],
             'category_id' => ['required'],
             'product_pic' => ['required', 'mimes:jpg,png,jpeg,max:5048'],
         ]);
@@ -103,12 +104,11 @@ class AdminProductController extends Controller
     {
         $request->validate([
             'name' => ['required', 'min:3', 'max:255'],
-            'price' => ['required', 'numeric'],
-            'weight' => ['numeric'],
-            'quantity' => ['required', 'numeric'],
-            'quantity' => ['required'],
+            'price' => ['required', 'numeric', 'min:1'],
+            'weight' => ['nullable', 'numeric', 'min:1'],
+            'quantity' => ['required', 'numeric', 'min:1'],
             'category_id' => ['required'],
-            'product_pic' => ['required', 'mimes:jpg,png,jpeg,max:5048'],
+            'product_pic' => ['nullable', 'mimes:jpg,png,jpeg,max:5048'],
         ]);
 
         $product->name = $request->name;

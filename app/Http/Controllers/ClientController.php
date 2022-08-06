@@ -43,7 +43,7 @@ class ClientController extends Controller
     {
         $request->validate([
             "name" => 'required|max:100',
-            "address" => 'required|max:255',
+            "adress" => 'required|max:255',
             "phone_number" => 'required|numeric|digits:11',
 
         ]);
@@ -91,7 +91,7 @@ class ClientController extends Controller
     {
         $request->validate([
             "name" => 'required|max:100|string',
-            "address" => 'required|max:255|string',
+            "adress" => 'required|max:255|string',
             "phone_number" => 'required|numeric|digits:11',
 
         ]);

@@ -1,8 +1,8 @@
 @extends('admin.layouts.master')
 @section('css')
-    @toastr_css
+@toastr_css
 @section('title')
-
+توصيلة - التصنيفات
 @stop
 @endsection
 @section('page-header')
@@ -10,12 +10,12 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0">{{ __('الفئات') }}</h4>
+            <h4 class="mb-0"> الفئات</h4>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="#" class="default-color">{{ __('الرئيسية') }}</a></li>
-                <li class="breadcrumb-item active">{{ __('الفئة') }}</li>
+                <li class="breadcrumb-item"><a href="#" class="default-color">Home</a></li>
+                <li class="breadcrumb-item active">الفئة</li>
             </ol>
         </div>
     </div>
@@ -26,215 +26,211 @@
 <!-- row -->
 <div class="row">
 
-    <div class="col-xl-12 mb-30">
+      <div class="col-xl-12 mb-30">
         <div class="card card-statistics h-100">
             <!-- add Grade -->
 
-            <div class="card-body">
+          <div class="card-body">
 
-                <!-- errors -->
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+<!-- errors -->
+          @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
-                <!-- end errors -->
-
-
-                <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
-                    {{ __('إضافة فئة') }}
-                </button>
-                <br><br>
-                <div class="table-responsive">
-                    <table id="datatable" class="table table-striped table-bordered p-0">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>{{ __('الرمز') }}</th>
-                                <th>{{ __('الاسم') }}</th>
-                                <th>{{ __('التاريخ') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+<!-- end errors -->
 
 
-                            @foreach ($categories as $category)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $category->id }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->created_at->diffForHumans() }}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                            data-target="#edit{{ $category->id }}" title="edit"><i
-                                                class="fa fa-edit"></i></button>
+          <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
+  اضافة فئة
+</button>
+<br><br>
+       <div class="table-responsive">
+            <table id="datatable" class="table table-striped table-bordered p-0">
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>id</th>
+                      <th>name</th>
+                      <th>created_at</th>
+
+                  </tr>
+              </thead>
+              <tbody>
 
 
-                                        <form action="{{ route('categories.destroy', $category->id) }}" method="post">
-                                            @method('DELETE')
-                                            @csrf
+    @foreach($categories as $category)
+   <tr>
+   <td>{{$loop->iteration}}</td>
+   <td>{{$category->id}}</td>
+   <td>{{$category->name}}</td>
+   <td>{{$category->created_at}}</td>
+   <td>
+   <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+   data-target= "#edit{{$category->id}}"
+   title="edit"><i class="fa fa-edit"></i></button>
 
 
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button>
-
-                                        </form>
-
-                                    </td>
-                                </tr>
-
-                                <!-- edit modal Grade -->
-                                <div class="modal fade" id="edit{{ $category->id }}" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <form action="{{ route('categories.update', $category->id) }}"
-                                                method="POST">
-                                                @method('PUT')
-                                                @csrf
-                                                <div class="modal-header">
-                                                    <h5 style="font-family: 'Cairo' , sans-serif;" class="modal-title"
-                                                        id="exampleModalLabel">
-                                                        edit
-                                                    </h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
+   <form action="{{ route('categories.destroy', $category->id )}}" method="post" >
+      @method('DELETE')
+      @csrf
 
 
+    <button type="submit"
+    class="btn btn-danger"><i class="fa fa-trash"></i></button>
 
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <!-- edit form   here -->
+</form>
 
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label for="name" class="mr-sm-2">الاسم:</label>
-                                                            <input id="name" type="text" name="name"
-                                                                class="form-control" value="{{ $category->name }}"
-                                                                required>
-                                                            {{-- <!-- <input id="id"  type="hidden" name="id" class="form-control" value="{{$category->id}}"> --> --}}
-                                                        </div>
+   </td>
+</tr>
 
-                                                        <br><br>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">{{ __('إغلاق') }}</button>
-                                                        <button type="submit"
-                                                            class="btn btn-success">{{ __('حفظ') }}</button>
-                                                    </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+<!-- edit modal Grade -->
+<div class="modal fade" id="edit{{$category->id}}" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <form action="{{ route('categories.update', $category->id) }}" method="POST">
+                    @method('PUT')
+                    @csrf
+        <div class="modal-header">
+            <h5 style="font-family: 'Cairo' , sans-serif;" class="modal-title"
+            id="exampleModalLabel">
+          edit
+</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
 
 
-                                <!-- delete modal -->
-                                <!-- Button trigger modal -->
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="delete{{ $category->id }}" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 style="font-family: 'Cairo' , sans-serif;" class="modal-title"
-                                                    id="exampleModalLabel">
-                                                    {{ __('حذف') }}
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{ route('categories.destroy', $category->id) }}"
-                                                    method="post">
-                                                    @method('DELETE')
-                                                    @csrf
+</button>
+</div>
+<div class="modal-body">
+    <!-- edit form   here -->
 
-                                                    {{ trans('Grades_trans.Warning_Grade') }}
-                                                    <input id="id" type="hidden" name="id"
-                                                        class="form-control" value="{{ $category->id }}">
+<div class="row">
+    <div class="col">
+        <label for="name" class="mr-sm-2">الاسم:</label>
+<input id="name" type="text" name="name" class="form-control"
+  value="{{$category->name}}" required>
+  {{-- <!-- <input id="id"  type="hidden" name="id" class="form-control" value="{{$category->id}}"> --> --}}
+</div>
+
+<br><br>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary"
+    data-dismiss="modal">اغلاق</button>
+    <button type="submit" class="btn btn-success">حفظ</button>
+</div>
+</form>
+</div>
+</div></div>
 
 
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">{{ __('إغلاق') }}</button>
-                                                        <button type="submit"
-                                                            class="btn btn-success">{{ __('حفظ') }}</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+<!-- delete modal -->
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="delete{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h5 style="font-family: 'Cairo' , sans-serif;" class="modal-title"
+            id="exampleModalLabel">
+           حذف
+</h5>
+   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="{{ route('categories.destroy', $category->id )}}" method="post" >
+      @method('DELETE')
+      @csrf
+
+    {{trans('Grades_trans.Warning_Grade')}}
+    <input id="id"  type="hidden" name="id" class="form-control" value="{{$category->id}}">
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary"
+    data-dismiss="modal">اغلاق</button>
+    <button type="submit"
+    class="btn btn-success">حفظ</button>
+</div>
+</form>
+    </div>
+  </div>
+</div>
 
 
 
 
 
-                                    <!-- end delete modal -->
-                        </tbody>
-                        @endforeach
+<!-- end delete modal -->
+   </tbody>
 
-                    </table>
-                </div>
-            </div>
+
+    @endforeach
+
+           </table>
+          </div>
+          </div>
 
         </div>
-    </div>
+      </div>
     <!-- here -->
 
-    <!-- add modal Grade -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 style="font-family: 'Cairo' , sans-serif;" class="modal-title" id="exampleModalLabel">
-                        اضافة فئة
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+<!-- add modal Grade -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 style="font-family: 'Cairo' , sans-serif;" class="modal-title"
+            id="exampleModalLabel">
+           اضافة فئة
+</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
 
 
 
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- add form   here -->
-                    <form action="{{ route('categories.store') }}" method="POST">
-                        @csrf
-                        <div class="row">
-                            <div class="col">
-                                <label for="Name" class="mr-sm-2">{{ __('الاسم') }}
-                                    :</label>
-                                <input id="name" type="text" name="name" class="form-control">
-                            </div>
+</button>
+</div>
+<div class="modal-body">
+    <!-- add form   here -->
+    <form action="{{ route('categories.store') }}" method="POST">
+    @csrf
+<div class="row">
+    <div class="col">
+        <label for="Name"
+        class="mr-sm-2">الاسم
+:</label>
+<input id="name" type="text" name="name" class="form-control" >
+</div>
 
-                            <br><br>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary"
-                                data-dismiss="modal">{{ __('إغلاق') }}</button>
-                            <button type="submit" class="btn btn-success">{{ __('حفظ') }}</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- finished -->
-    </div>
-    <!-- row closed -->
+<br><br>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary"
+    data-dismiss="modal">اغلاق</button>
+    <button type="submit"
+    class="btn btn-success">حفظ</button>
+</div>
+</form>
+</div>
+</div></div>
+<!-- finished -->
+  </div>
+<!-- row closed -->
 @endsection
 @section('js')
-    @toastr_js
-    @toastr_render
+@toastr_js
+@toastr_render
 @endsection

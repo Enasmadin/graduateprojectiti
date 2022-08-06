@@ -25,10 +25,10 @@
                                 @enderror
                             </div>
                             <div class="col-12">
-                                <label for="address" class="form-label text-primary">{{ __('العنوان') }}</label>
-                                <input type="text" class="form-control @error('address') is-invalid @enderror"
-                                    id="address" name="address" value="{{ old('address') }}">
-                                @error('address')
+                                <label for="adress" class="form-label text-primary">{{ __('العنوان') }}</label>
+                                <input type="text" class="form-control @error('adress') is-invalid @enderror"
+                                    id="adress" name="adress" value="{{ old('adress') }}">
+                                @error('adress')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

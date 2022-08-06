@@ -14,6 +14,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryContoller;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\Admin\AdminClientController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\Admin\AdminProductController;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -137,7 +141,7 @@ Route::get('/test', function () {
 
 // adding group
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    return view('admins.dashboard');
 })->middleware('is_admin');
 // })->middleware('is_admin');
 

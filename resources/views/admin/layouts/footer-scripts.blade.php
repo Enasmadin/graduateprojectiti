@@ -36,7 +36,7 @@
 
 
 
-@if (App::getLocale() == 'en')
+@if (App::getLocale() == 'ar')
     <script src="{{ URL::asset('admin/assets/js/bootstrap-datatables/en/jquery.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('admin/assets/js/bootstrap-datatables/en/dataTables.bootstrap4.min.js') }}"></script>
 @else

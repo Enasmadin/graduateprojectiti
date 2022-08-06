@@ -196,7 +196,7 @@ return [
 
 
         // CLIENTS
-        'address' => 'العنوان',
+        'adress' => 'العنوان',
 
 
         'description' => 'الوصف',
