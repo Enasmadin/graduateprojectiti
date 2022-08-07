@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\isVendor;
 use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\IsDelivery;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -57,8 +58,9 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
-        'is_vendor' => isVendor::class,
+        'is_vendor' => IsVendor::class,
         'is_admin' => IsAdmin::class,
+        'is_delivery' => IsDelivery::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,

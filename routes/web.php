@@ -42,7 +42,6 @@ Route::name('admin.')->prefix('admin')->middleware('is_admin')->group(function (
 });
 
 Route::prefix('admin')->middleware('is_admin')->group(function () {
-
     Route::resource('/users', UserController::class);
     Route::resource('/admines', AdminController::class);
     Route::resource('/categories', CategoryContoller::class);
@@ -85,8 +84,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('/clients', ClientController::class)->middleware('is_vendor');
 Route::resource('/vendors', VendorOrderController::class)->middleware('is_vendor');
 Route::resource('/comments', CommentController::class);
-Route::resource('/orders', OrderController::class);
-Route::resource('/wishlist', WishlistController::class);
+Route::resource('/orders', OrderController::class)->middleware('auth');
+Route::resource('/wishlist', WishlistController::class)->middleware('is_delivery');
 Route::resource('/profiles', ProfileController::class)->except(['create', 'store', 'destroy']);
 
 Route::resource('/mails', MailController::class);
