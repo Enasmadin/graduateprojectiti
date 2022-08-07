@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Client;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPostController extends Controller
 {
@@ -18,7 +19,7 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-        $posts = Post::simplePaginate(10);
+        $posts = Post::simplePaginate(10);;
         $users = User::all();
 
         $products = Product::all();
@@ -49,7 +50,23 @@ class AdminPostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post();
+        $request->validate([
+            "title" => 'required|max:100|string',
+            "description" => 'required|max:255|string',
+            "from" => 'required|string',
+            "to" => 'required|string',
+            "deliver_price" => 'required|numeric|min:1',
+            "product_id" => 'required',
+            "client_id" => 'required'
+        ]);
+
+        $post = new Post(request()->all());
+        $post->user_id = Auth::user()->id;
+
+        $post->save();
+        return redirect()->route("admin.posts.index");
+
+
     }
 
     /**
@@ -105,6 +122,6 @@ class AdminPostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index');
+        return redirect()->route("admin.posts.index");
     }
 }

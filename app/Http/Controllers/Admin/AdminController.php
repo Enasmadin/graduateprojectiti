@@ -126,7 +126,7 @@ class AdminController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255'],
 
             'phone_number' => ['required', 'numeric', 'min:11'],
             'city' => ['required', 'string'],
@@ -142,7 +142,7 @@ class AdminController extends Controller
 
         $user = User::findOrFail($id);
 
-        if ($request->hasFile('profilePic')) {
+        if ($request->hasFile('profile_pic')) {
 
             File::delete(public_path("profilePic/" . $user->profile_pic));
 
@@ -166,7 +166,7 @@ class AdminController extends Controller
         }
         if ($request->hasFile('national_id_second_pic')) {
 
-            File::delete(public_path("nationalIdPic/" . $user->national_id_first_pic));
+            File::delete(public_path("nationalIdPic/" . $user->national_id_second_pic));
 
             //            upload new photo
             $newName =  time() . '-' . trim($request['name']) . 'Second' . '.' . $request['national_id_second_pic']->guessExtension();

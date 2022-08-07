@@ -38,6 +38,15 @@
                     </div>
                 @endif
 
+                @if ($mails->count() == 0)
+                <div class="text-center col col-md-12">
+
+              {{ __('لا توجد رسائل   ') }}
+
+                </div>
+
+            @else
+
 
 
                 <div class="table-responsive">
@@ -52,6 +61,7 @@
                                 <th>الاجراء </th>
                             </tr>
                         </thead>
+                        @endif
                         <tbody>
 
 
