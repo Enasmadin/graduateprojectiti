@@ -18,7 +18,7 @@ class AdminClientController extends Controller
     {
 
         $users = User::where('role', 'vendor')->get();
-        $clients = Client::all();
+        $clients = Client::simplePaginate(10);
         // foreach($clients as $client){
         //     dd($client);
         // };

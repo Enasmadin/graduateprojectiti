@@ -14,8 +14,8 @@ class CategoryContoller extends Controller
      */
     public function index()
     {
-        // $categories = Category::simplePaginate(10);
-        $categories = Category::all();
+        $categories = Category::simplePaginate(10);
+        // $categories = Category::all();
 
         return view('admin.pages.categories.index', ["categories" => $categories]);
     }

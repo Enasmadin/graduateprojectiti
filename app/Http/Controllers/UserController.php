@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('is_admin', '0')->where('status', 'pending')->get();
+        $users = User::where('is_admin', '0')->where('status', 'pending')->simplePaginate(10);
 
 
         return view("admin.pages.users", ["users" => $users]);

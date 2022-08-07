@@ -81,6 +81,7 @@
 
                     </table>
                 </div>
+                <div class="float-right">{{ $mails->links() }}</div>
             </div>
 
         </div>

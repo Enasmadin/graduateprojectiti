@@ -18,7 +18,7 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::simplePaginate(10);
         $users = User::all();
 
         $products = Product::all();

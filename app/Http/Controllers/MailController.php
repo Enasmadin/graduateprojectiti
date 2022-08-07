@@ -14,7 +14,7 @@ class MailController extends Controller
      */
     public function index()
     {
-        $mails = Mail::all();
+        $mails = Mail::simplePaginate(10);
         return view('admin.pages.mails.index', [
             'mails' => $mails
         ]);

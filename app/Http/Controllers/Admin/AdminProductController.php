@@ -21,7 +21,7 @@ class AdminProductController extends Controller
     {
 
         // dd(auth()->user()->is_admin);
-        $products = Product::all();
+        $products = Product::simplePaginate(10);
         // $products = Product::Paginate(1);
         $users = User::where('role', 'vendor')->get();
         $cats = Category::all();

@@ -41,7 +41,7 @@
                 <!-- end errors -->
 
 
-                {{-- <div>{{ $categories->links() }}</div> --}}
+
 
                 <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
                     اضافة فئة
@@ -169,9 +169,9 @@
                                     <!-- end delete modal -->
                         </tbody>
                         @endforeach
-
                     </table>
                 </div>
+                <div class="float-right">{{ $categories->links() }}</div>
             </div>
 
         </div>

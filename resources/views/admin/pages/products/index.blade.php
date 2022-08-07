@@ -88,8 +88,8 @@
                                         </a>
 
                                         <form id="product-delete{{ $product->id }}"
-                                            action="{{ route('admin.products.destroy', $product->id) }}"
-                                            method="POST" class="d-none">
+                                            action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
+                                            class="d-none">
                                             @csrf
                                             @method('DELETE')
                                         </form>
@@ -262,6 +262,7 @@
                             @endforeach
                     </table>
                 </div>
+                <div class="float-right">{{ $products->links() }}</div>
             </div>
 
         </div>

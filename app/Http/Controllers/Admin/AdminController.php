@@ -19,7 +19,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::where('status', 'accepted')->get();
+        $users = User::where('status', 'accepted')->simplePaginate(10);
         return view("admin.pages.allusers", ["users" => $users]);
     }
 

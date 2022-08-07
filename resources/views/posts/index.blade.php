@@ -4,7 +4,12 @@
     <div class="container">
         @if ($posts->count() == 0)
             <h3 class="mb-3">{{ __('لا توجد منشورات') }}</h3>
-            <a class="btn btn-primary" href="{{ route('posts.create') }}">{{ __('اضف منشورا جديدا') }}</a>
+
+            @auth
+                @authVendor
+                <a class="btn btn-primary" href="{{ route('posts.create') }}">{{ __('اضف منشورا جديدا') }}</a>
+                @endauthVendor
+            @endauth
         @else
             <div class="row">
                 <div class="col-sm-8 col-md-9">
