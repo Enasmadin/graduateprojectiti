@@ -18,8 +18,7 @@
                         <div class="accordion" id="accordionExample">
 
                             @foreach ($posts as $post)
-
-                                @if($post->comment->count() > 0)
+                                @if ($post->comment->count() > 0)
                                     <div class="accordion-item">
 
                                         <h2 class="accordion-header" id="headingOne">
@@ -61,31 +60,34 @@
                                                                     <td class="text-break">
                                                                         {{ $comment->description }}</td>
                                                                     <td>{{ $comment->delivery_date }}</td>
-                                                                    @if(App\Models\Order::where('post_id', $post->id)->exists())
-                                                                    <td class="text-nowrap"> هناك طلبية بالفعل لهذا المنشور </td>
+                                                                    @if (App\Models\Order::where('post_id', $post->id)->exists())
+                                                                        <td class="text-nowrap"> هناك طلبية بالفعل لهذا
+                                                                            المنشور </td>
                                                                     @else
-                                                                    <td class="text-nowrap">
-                                                                        <button type="button" class="btn btn-success"
-                                                                            onclick="event.preventDefault();
+                                                                        <td class="text-nowrap">
+                                                                            <button type="button" class="btn btn-success"
+                                                                                onclick="event.preventDefault();
                                                                     document.getElementById('accept-form').submit();  "
-                                                                            value="{{ $comment->id }}"
-                                                                            >{{ __('قبول') }}
-                                                                        </button>
-                                                                        {{-- <button type="button" class="btn btn-danger"
+                                                                                value="{{ $comment->id }}">{{ __('قبول') }}
+                                                                            </button>
+                                                                            {{-- <button type="button" class="btn btn-danger"
                                                                             onclick="event.preventDefault();
                                                                     document.getElementById('refuse-form').submit();">{{ __('رفض') }}</button> --}}
-                                                                    </td>
-                                                                    <form id="accept-form" action="{{ route('orders.store') }}"
-                                                                        method="POST" class="d-none">
-                                                                        @csrf
-                                                                        <input class="d-none" type="text"
-                                                                            value="{{ $comment->id }}" name="commentid">
-                                                                    </form>
-                                                                    <form id="refuse-form" action="{{ route('orders.index') }}"
-                                                                        method="POST" class="d-none">
-                                                                        @csrf
-                                                                        @method('delete')
-                                                                    </form>
+                                                                        </td>
+                                                                        <form id="accept-form"
+                                                                            action="{{ route('orders.store') }}"
+                                                                            method="POST" class="d-none">
+                                                                            @csrf
+                                                                            <input class="d-none" type="text"
+                                                                                value="{{ $comment->id }}"
+                                                                                name="commentid">
+                                                                        </form>
+                                                                        <form id="refuse-form"
+                                                                            action="{{ route('orders.index') }}"
+                                                                            method="POST" class="d-none">
+                                                                            @csrf
+                                                                            @method('delete')
+                                                                        </form>
                                                                     @endif
                                                                 </tr>
                                                             @endforeach

@@ -27,9 +27,7 @@ Route::name('api.')->group(function () {
     Route::post("/logout", [RegisterController::class, 'logout']);
     Route::apiresource('/posts', PostController::class);
     Route::apiresource('/users', UserController::class);
-
     Route::apiresource("/clients", ClientController::class);
-
     Route::apiresource("/profiles", ProfileController::class);
     Route::post("/profiles/{id}", [ProfileController::class, "updating"]);
 });

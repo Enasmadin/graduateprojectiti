@@ -90,10 +90,10 @@
                                     </select>
                                     <div>
                                         @error('product_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -107,13 +107,13 @@
                                             </option>
                                         @endforeach
                                     </select>
-                                <div>
-                                    @error('client_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                </div>
+                                    <div>
+                                        @error('client_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
 
                                 <div class="d-flex justify-content-between my-5">

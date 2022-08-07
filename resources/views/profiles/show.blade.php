@@ -100,7 +100,7 @@
                         {{ $user->name }}
                         @auth
                             @if (auth()->user()->id == $user->id)
-                            <a href="{{ route('profiles.edit', $user->id) }}"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('profiles.edit', $user->id) }}"><i class="fas fa-edit"></i></a>
                             @endif
                         @endauth
                     </h4>
@@ -108,12 +108,11 @@
 
                     @auth
 
-                    @if (auth()->user()->id != $user->id)
-
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        @if (auth()->user()->id != $user->id)
+                            {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         {{ __('تقييم') }}
-                    </button>
-                    @endif
+                    </button> --}}
+                        @endif
                     @endauth
 
                 </div>

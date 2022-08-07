@@ -43,7 +43,7 @@
 
                             <p class="card-text text-dark">
                                 <span class="fw-bold">{{ __('المحمول: ') }}</span>
-                                {{ $client->phone_number }}
+                                0{{ $client->phone_number }}
                             </p>
 
                             <div class="text-center mb-2">
@@ -69,6 +69,18 @@
                                 {{-- // TODO --}}
                                 <a href="{{ route('clients.edit', $client->id) }}"
                                     class="btn btn-outline-secondary">{{ __('تعديل') }}</a>
+                                <a href="{{ route('clients.destroy', $client->id) }}"
+                                        class="btn btn-outline-danger"
+                                        onclick="event.preventDefault();
+                                        document.getElementById('client{{$loop->iteration}}').submit();">{{ __('حذف') }} </a>
+
+                                <form  id="client{{$loop->iteration}}" action="{{ route('clients.destroy', $client->id) }}" method="post"  class="d-none">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-danger col-12">{{ __('حذف') }}</button>
+
+                                </form>
                             </div>
                         </div>
                     </div>

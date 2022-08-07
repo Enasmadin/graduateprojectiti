@@ -5,13 +5,16 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('profilepic/1658230283-radwaProfile.jpg') }}" class="d-block w-100" style="height: 400px; object-fit:cover">
+                    <img src="{{ asset('profilepic/about.webp') }}" class="d-block w-100"
+                        style="height: 400px; object-fit:cover">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('profilepic/1658241513-ShadyProfile.png') }}" class="d-block w-100" style="height: 400px; object-fit:cover">
+                    <img src="{{ asset('profilepic/city-delivery-service-courier-man-on-bike-vector-33700166.webp') }}"
+                        class="d-block w-100" style="height: 400px; object-fit:cover">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset('profilepic/1658195093-UserProfile.png') }}" class="d-block w-100" style="height: 400px; object-fit:cover">
+                    <img src="{{ asset('profilepic/delivery-colorful-set-vector-35490415.webp') }}" class="d-block w-100"
+                        style="height: 400px; object-fit:cover">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -53,13 +56,12 @@
                     </h4>
 
                     <div class="avatar-group border-top py-5 mt-5">
-                        <img src="{{ asset('images/avatar/portrait-good-looking-brunette-young-asian-woman.jpg') }}"
-                            class="img-fluid avatar-image" alt="">
+                        <img src="{{ asset('images/avatar/signup.png') }}" class="img-fluid avatar-image" alt="">
 
-                        <img src="{{ asset('images/avatar/happy-asian-man-standing-with-arms-crossed-grey-wall.jpg" class="img-fluid avatar-image avatar-image-left') }}"
+                        <img src="{{ asset('images/avatar/login.png" class="img-fluid avatar-image avatar-image-left') }}"
                             alt="">
 
-                        <img src="{{ asset('images/avatar/senior-man-white-sweater-eyeglasses.jpg" class="img-fluid avatar-image avatar-image-left') }}"
+                        <img src="{{ asset('images/avatar/allposts.png" class="img-fluid avatar-image avatar-image-left') }}"
                             alt="">
 
                         <img src="{{ asset('images/avatar/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction.jpg" class="img-fluid avatar-image avatar-image-left') }}"
@@ -93,8 +95,7 @@
 
                 <div class="col-lg-6 col-12">
                     <div class="speakers-thumb">
-                        <img src="{{ asset('images/avatar/register.png') }}" class="img-fluid speakers-image"
-                            alt="">
+                        <img src="{{ asset('images/avatar/signup.png') }}" class="img-fluid speakers-image" alt="">
 
                         <small class="speakers-featured-text">Featured</small>
 
@@ -134,7 +135,7 @@
 
                         <div class="col-lg-3 col-md-6 col-12">
                             <div class="speakers-thumb speakers-thumb-small">
-                                <img src="{{ asset('images/avatar/Screenshot (43).png') }}"
+                                <img src="{{ asset('images/avatar/comment.png') }}"
                                     class="img-fluid speakers-image  spekers-s" alt="">
 
                                 <div class="speakers-info">
@@ -155,7 +156,8 @@
                                 <div class="speakers-info">
                                     <h5 class="speakers-title mb-0">الخطوة الرابعة</h5>
 
-                                    <p class="speakers-text mb-0">إذا سجلت كتاجر، يمكنك إضافة منتج وعرضه في منشور ومن كطلبية
+                                    <p class="speakers-text mb-0">إذا سجلت كتاجر، يمكنك إضافة منتج وعرضه في منشور ومن
+                                        كطلبية
                                     </p>
 
                                 </div>
@@ -186,33 +188,46 @@
 
 
     <section class="contact section-padding" id="section_7">
+
         <div class="container">
             <div class="row my-5">
-
+                <div class="container">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block alert-dismissible fade show">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                </div>
                 <div class="col-lg-8 col-12 mx-auto">
-                    <form class="bg-white shadow-lg p-3 rounded-3" action="#" method="POST" role="form">
+                    <form class="bg-white shadow-lg p-3 rounded-3" action="{{ route('mails.store') }}" method="POST"
+                        role="form">
                         @csrf
 
                         <h2 class="text-info">راسلنا</h2>
 
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12 mb-2">
-                                <input type="text" name="name" id="name" class="form-control"
-                                    placeholder="الاسم" required="">
+                                <input type="text" name="name" id="name"
+                                    class="form-control @error('name') is-invalid @enderror" placeholder="الاسم"
+                                    required="">
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12 mb-2">
                                 <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*"
-                                    class="form-control" placeholder="البريد الإلكنروني" required="">
+                                    class="form-control @error('name') is-invalid @enderror"
+                                    placeholder="البريد الإلكنروني" required="">
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12 mb-2">
-                                <input type="text" name="subject" id="subject" class="form-control"
-                                    placeholder="الرسالة">
+                                <input type="text" name="title" id="subject"
+                                    class="form-control @error('name') is-invalid @enderror" placeholder="العنوان">
                             </div>
 
                             <div class="col-12 mb-2">
-                                <textarea class="form-control" rows="5" id="message" name="message" placeholder="Message"></textarea>
+                                <textarea class="form-control @error('name') is-invalid @enderror" rows="5" id="message" name="body"
+                                    placeholder="Message"></textarea>
 
                             </div>
                             <div class="col-12 ">
@@ -220,6 +235,7 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
 
             </div>

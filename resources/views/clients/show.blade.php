@@ -17,7 +17,7 @@
 
                         <p class="card-text text-center ">
                             <span class="fw-bold">{{ __('رقم المحمول: ') }}</span>
-                            <span>{{ $clients->phone_number }}</span>
+                            <span> 0{{ $clients->phone_number }}</span>
                         </p>
 
                         {{-- <p class="card-text">
@@ -115,7 +115,7 @@
       <div class="container text-center my-5">
       <div class="card text-center" style="width: 18rem;">
         <div class="card-body">
-         
+
           <h3>name: </h3>
           <h5 class="card-title">{{ $clients['name'] }}</h5>
           <h3>address: </h3>
@@ -123,18 +123,18 @@
           <h3>phone: </h3>
           <p class="card-text">{{ $clients['phone_number'] }}</p>
           <a href="{{ route('clients.edit', $clients->id) }}" class="btn btn-warning">تعديل </a>
-          
+
           <form action= "{{ route('clients.destroy', $clients->id) }}" method="post" class="mb-3">
             @csrf
             @method('DELETE')
-            
+
             <button type="submit" class="btn btn-danger col-12"> حذف  </button>
-            
+
           </form>
         </div>
       </div>
     </div>
-  
+
 
 
     </body>

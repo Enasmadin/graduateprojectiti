@@ -16,9 +16,9 @@
                                 @csrf
 
                                 <div class="col-12">
-                                    <label for="name"
-                                        class="form-label  text-primary">{{ __('الاسم') }}</label>
-                                    <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
+                                    <label for="name" class="form-label  text-primary">{{ __('الاسم') }}</label>
+                                    <input type="text" class="form-control  @error('name') is-invalid @enderror"
+                                        id="name" name="name" value="{{ old('name') }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -26,9 +26,9 @@
                                     @enderror
                                 </div>
                                 <div class="col-12">
-                                    <label for="price"
-                                        class="form-label text-primary ">{{ __('السعر') }}</label>
-                                    <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price') }}">
+                                    <label for="price" class="form-label text-primary ">{{ __('السعر') }}</label>
+                                    <input type="text" class="form-control @error('price') is-invalid @enderror"
+                                        id="price" name="price" value="{{ old('price') }}">
                                     @error('price')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -36,10 +36,10 @@
                                     @enderror
                                 </div>
                                 <div class="col-12">
-                                    <label for="weight"
-                                        class="form-label text-primary ">{{ __('الوزن') }}</label>
-                                    <input type="text" class="form-control @error('weight') is-invalid @enderror" id="weight" placeholder="الوزن اختياري"
-                                        name="weight" value="{{ old('weight') }}">
+                                    <label for="weight" class="form-label text-primary ">{{ __('الوزن') }}</label>
+                                    <input type="text" class="form-control @error('weight') is-invalid @enderror"
+                                        id="weight" placeholder="الوزن اختياري" name="weight"
+                                        value="{{ old('weight') }}">
                                     @error('weight')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -47,10 +47,10 @@
                                     @enderror
                                 </div>
                                 <div class="col-12">
-                                    <label for="quantity"
-                                        class="form-label text-primary ">{{ __('الكمية') }}</label>
-                                    <input type="text" class="form-control @error('quantity') is-invalid @enderror" id="quantity"
-                                        placeholder="الكمية الإفتراضيه ب 1" name="quantity" value="{{ old('quantity') }}">
+                                    <label for="quantity" class="form-label text-primary ">{{ __('الكمية') }}</label>
+                                    <input type="text" class="form-control @error('quantity') is-invalid @enderror"
+                                        id="quantity" placeholder="الكمية الإفتراضيه ب 1" name="quantity"
+                                        value="{{ old('quantity') }}">
                                     @error('quantity')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -61,14 +61,16 @@
                                 <div class="col-12">
                                     <lab el for="category" class="form-label text-primary">
                                         {{ __('اختر تصنيفا') }}</lab>
-                                    <select id="category" class="form-select overflow-hidden  @error('category') is-invalid @enderror" name="category_id">
+                                    <select id="category"
+                                        class="form-select overflow-hidden  @error('category') is-invalid @enderror"
+                                        name="category_id">
 
 
                                         @foreach ($cats as $cat)
-                                        <option value="{{ old('category_id', $cat->id) }}" name="category_id">
-                                            {{-- {{ $cat->id == $product->cat_id ? 'selected' : '' }}> --}}
-                                            {{ $cat->name }}
-                                        </option>
+                                            <option value="{{ old('category_id', $cat->id) }}" name="category_id">
+                                                {{-- {{ $cat->id == $product->cat_id ? 'selected' : '' }}> --}}
+                                                {{ $cat->name }}
+                                            </option>
                                         @endforeach
                                         {{-- @foreach ($products as $product)
                                         <option value="{{ old('id', $product->id) }}"
@@ -88,7 +90,8 @@
                                 <div class="col-12">
                                     <label for="productPic"
                                         class="form-label text-primary ">{{ __('أضف صور المنتج') }}</label>
-                                    <input class="form-control @error('product_pic') is-invalid @enderror" type="file" id="productPic" multiple name="product_pic">
+                                    <input class="form-control @error('product_pic') is-invalid @enderror" type="file"
+                                        id="productPic" multiple name="product_pic">
                                     @error('product_pic')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

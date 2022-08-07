@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Mail;
 use Illuminate\Http\Request;
 
-class CategoryContoller extends Controller
+class MailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class CategoryContoller extends Controller
      */
     public function index()
     {
-        // $categories = Category::simplePaginate(10);
-        $categories = Category::all();
-
-        return view('admin.pages.categories.index', ["categories" => $categories]);
+        $mails = Mail::all();
+        return view('admin.pages.mails.index', [
+            'mails' => $mails
+        ]);
     }
 
     /**
@@ -39,20 +39,24 @@ class CategoryContoller extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name" => 'required|max:100|alpha'
+            'name' => ['required', 'alpha'],
+            'email' => ['required', 'email'],
+            'title' => ['required', 'alpha'],
+            'body' => ['required', 'string']
         ]);
-        $categories = new Category(request()->all());
-        $categories->save();
-        return redirect()->route("categories.index");
+        // dd($request->all());
+        $mail = new Mail($request->all());
+        $mail->save();
+        return back()->with('success', 'تم إرسال رسالتك بنجاح');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Mail  $mail
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Mail $mail)
     {
         //
     }
@@ -60,10 +64,10 @@ class CategoryContoller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Mail  $mail
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Mail $mail)
     {
         //
     }
@@ -72,30 +76,23 @@ class CategoryContoller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Mail  $mail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Mail $mail)
     {
-        $request->validate([
-            "name" => 'required|max:100|alpha'
-        ]);
-
-        $category->name = $request['name'];
-
-        $category->update();
-        return redirect()->route("categories.index");
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Mail  $mail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Mail $mail)
     {
-        $category->delete();
-        return redirect()->route("categories.index");
+        $mail->delete();
+        return back();
     }
 }

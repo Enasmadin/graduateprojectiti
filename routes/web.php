@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryContoller;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\Admin\AdminClientController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminPostController;
@@ -27,9 +28,9 @@ Route::get('/', function () {
     return view('homepage');
 });
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+// Route::get('/welcome', function () {
+//     return view('welcome');
+// });
 
 
 
@@ -37,11 +38,16 @@ Route::name('admin.')->prefix('admin')->middleware('is_admin')->group(function (
     Route::resource('/posts', AdminPostController::class);
     Route::resource('/clients', AdminClientController::class,);
     Route::resource('/products', AdminProductController::class);
+    Route::resource('/mails', MailController::class);
 });
 
-Route::resource('/users', UserController::class)->middleware('is_admin');
-Route::resource('/admines', AdminController::class)->middleware('is_admin');
-Route::resource('/categories', CategoryContoller::class)->middleware('is_admin');
+Route::prefix('admin')->middleware('is_admin')->group(function () {
+
+    Route::resource('/users', UserController::class);
+    Route::resource('/admines', AdminController::class);
+    Route::resource('/categories', CategoryContoller::class);
+});
+
 
 // Route::get('/image', function () {
 //     return view('image');
@@ -82,6 +88,8 @@ Route::resource('/comments', CommentController::class);
 Route::resource('/orders', OrderController::class);
 Route::resource('/wishlist', WishlistController::class);
 Route::resource('/profiles', ProfileController::class)->except(['create', 'store', 'destroy']);
+
+Route::resource('/mails', MailController::class);
 
 
 Auth::routes();
@@ -145,5 +153,5 @@ Route::get('/dashboard', function () {
 })->middleware('is_admin');
 // })->middleware('is_admin');
 
-Route::resource('/users', UserController::class)->middleware('is_admin');
-Route::resource('/categories', CategoryContoller::class)->middleware('is_admin');
+// Route::resource('/users', UserController::class)->middleware('is_admin');
+// Route::resource('/categories', CategoryContoller::class)->middleware('is_admin');

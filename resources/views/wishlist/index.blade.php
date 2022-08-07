@@ -4,9 +4,7 @@
     <div class="container">
         @if ($favs->count() == 0)
             <h3 class="mb-3">لا يوجد شئ في المفضلة</h3>
-
         @else
-
         @endif
     </div>
 
@@ -44,16 +42,17 @@
                                     <a class="btn btn-primary" href="{{ route('posts.show', $fav->post->id) }}">
                                         {{ __('عرض') }}
                                     </a>
-                                    <a class="btn btn-outline-danger" href="{{ route('wishlist.destroy', $fav->id) }}"onclick="event.preventDefault();
+                                    <a class="btn btn-outline-danger"
+                                        href="{{ route('wishlist.destroy', $fav->id) }}"onclick="event.preventDefault();
                                         document.getElementById('wishlistdestroy').submit();">
                                         {{ __('حذف') }}
                                     </a>
-                                    <form id="wishlistdestroy" action="{{ route('wishlist.destroy', $fav->id) }}" method="POST"
-                                    class="d-none">
-                                    @csrf
-                                    @method("DELETE")
+                                    <form id="wishlistdestroy" action="{{ route('wishlist.destroy', $fav->id) }}"
+                                        method="POST" class="d-none">
+                                        @csrf
+                                        @method('DELETE')
 
-                                </form>
+                                    </form>
                                 </div>
                             </div>
 
@@ -63,7 +62,8 @@
                                         class="col-12 card-img-top  rounded-circle" alt="{{ $fav->post->user->name }}"
                                         style="width:70px; height:70px; object-fit:cover;">
                                 </a>
-                                <small class="col-12 fw-bold fs-6" style="color: #007EA7">{{ $fav->post->user->name }}</small>
+                                <small class="col-12 fw-bold fs-6"
+                                    style="color: #007EA7">{{ $fav->post->user->name }}</small>
                             </div>
                         </div>
                     </div>

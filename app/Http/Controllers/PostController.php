@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\User;
@@ -98,9 +99,11 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $userPosts = $post->user->posts->take(3);
+        // dd($post->comment);
+        $userPosts = $post->user->posts->whereNotIn('id', $post->id)->take(3);
         $catPostId = $post->product->category->id;
         $posts = Post::all();
+        $comments = Comment::all()->where('post_id', $post->id);
         // dd($posts);
         // $test = $posts->products->where('category_id', $catPostId);
 
@@ -108,7 +111,8 @@ class PostController extends Controller
         return view("posts.show", [
             "post" => $post,
             "UserPosts" => $userPosts,
-            "favs" => $favs
+            "favs" => $favs,
+            "comments" => $comments
         ]);
     }
 

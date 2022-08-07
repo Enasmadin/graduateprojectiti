@@ -33,30 +33,30 @@
         <!-- main-content -->
         <div class="content-wrapper">
 
-          @yield('page-header')
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">@yield('PageTitle')</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+            @yield('page-header')
+            <div class="page-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">@yield('PageTitle')</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
 
-            </ol>
-        </div>
-    </div>
+                        </ol>
+                    </div>
+                </div>
 
-            @yield('content')
+                @yield('content')
 
-            <!--=================================
+                <!--=================================
  wrapper -->
 
-            <!--=================================
+                <!--=================================
  footer -->
 
-            @include('admin.layouts.footer')
-        </div><!-- main content wrapper end-->
-    </div>
+                @include('admin.layouts.footer')
+            </div><!-- main content wrapper end-->
+        </div>
     </div>
     </div>
 

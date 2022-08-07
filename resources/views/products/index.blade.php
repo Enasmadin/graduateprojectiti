@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="col-sm-4 col-md-3 offset-md-0">
-                    <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ __('اضف منتجا') }}</a>
+                    <a href="{{ route('products.create') }}" class="btn btn-primary">{{ __('اضف منتجا') }}</a>
                 </div>
             </div>
         @endif

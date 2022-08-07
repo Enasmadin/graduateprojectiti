@@ -126,7 +126,10 @@
 
                                 <a class="nav-item nav-link" href="{{route('wishlist.index')}}" role="button"
                                     >
-                                    المفضله {{auth()->user()->wishlists->count()}}
+                                    المفضله
+                                    <span class="badge badge-pill badge-danger" >
+                                        {{auth()->user()->wishlists->count()}}
+                                    </span>
                                 </a>
 
                             @endauthDelivery
@@ -167,7 +170,12 @@
                                                 {{ Auth::user()->name }}
                                             </span>
                                             <small class="text-muted fw-bold">
-                                                {{ Auth::user()->role }}
+                                                @if (Auth::user()->role === 'vendor')
+                                                    تاجر
+
+                                                @else
+                                                    مندوب
+                                                @endif
                                             </small>
                                         </div>
                                         <div class="mx-2 d-sm-none d-md-block">

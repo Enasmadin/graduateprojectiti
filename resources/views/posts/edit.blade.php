@@ -77,7 +77,7 @@
                                 @enderror
                             </div>
 
-                        
+
 
                             <div class="mb-3">
                                 <label for="product_id" class="form-label text-primary">{{ __('المنتح') }}</label>
@@ -85,10 +85,10 @@
                                 {{-- {{ dd($post->product->count()) }} --}}
                                 {{-- @if ($post->product->count() > 0) --}}
 
-                                <select name="product_id" id="product_id" class="form-select @error('product_id') is-invalid @enderror">
+                                <select name="product_id" id="product_id"
+                                    class="form-select @error('product_id') is-invalid @enderror">
                                     {{-- <option value="0">{{ __('Choose Product') }}</option> --}}
                                     @foreach ($products as $product)
-
                                         <option value="{{ old('product_id', $product->id) }}"
                                             {{ $product->id == $post->product_id ? 'selected' : '' }}>
                                             {{ $product->name }}
@@ -108,7 +108,8 @@
                             </div>
 
                             <div class="col-12 text-end">
-                                <a href="{{ route('clients.index') }}" class="btn btn-outline-danger">{{ __('إلغاء') }}</a>
+                                <a href="{{ route('clients.index') }}"
+                                    class="btn btn-outline-danger">{{ __('إلغاء') }}</a>
                                 <button type="submit" class="btn btn-primary">{{ __('حفظ') }}</button>
                             </div>
                         </form>

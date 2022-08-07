@@ -16,10 +16,14 @@
                         <button class="btn btn-primary" type="submit">{{ __('ابحث') }}</button>
                     </form>
                 </div>
+                @auth
 
-                <div class="col-sm-3 col-md-2 offset-md-1">
-                    <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ __('اضف منشورا') }}</a>
-                </div>
+                    @authVendor
+                    <div class="col-sm-3 col-md-2 offset-md-1">
+                        <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ __('اضف منشورا') }}</a>
+                    </div>
+                    @endauthVendor
+                @endauth
             </div>
         @endif
     </div>
@@ -62,13 +66,22 @@
                                     {{-- @vendor --}}
                                     @auth
 
-                                    @if (auth()->user()->id  === $post->user_id)
+                                        @if (auth()->user()->id === $post->user_id)
+                                            <a class="btn btn-outline-primary" href="{{ route('posts.edit', $post->id) }}">
+                                                {{ __('تعديل') }}
+                                            </a>
+                                            <a class="btn btn-outline-danger" href="{{ route('posts.destroy', $post->id) }}"
+                                                onclick="event.preventDefault();
+                                        document.getElementById('delete{{ $post->id }}').submit();">
 
-
-                                    <a class="btn btn-outline-primary" href="{{ route('posts.edit', $post->id) }}">
-                                        {{ __('تعديل') }}
-                                    </a>
-                                    @endif
+                                                حذف
+                                            </a>
+                                            <form id="delete{{ $post->id }}"
+                                                action="{{ route('posts.destroy', $post->id) }}" method="POST" class="d-none">
+                                                @method('DELETE')
+                                                @csrf
+                                            </form>
+                                        @endif
                                     @endauth
                                     {{-- @endvendor --}}
                                 </div>

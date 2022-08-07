@@ -54,7 +54,10 @@ class CommentController extends Controller
         $comment->user_id = auth()->user()->id;
         $comment->post_id = $postId;
         $comment->save();
-        return redirect()->route("posts.show", $postId);
+
+        return back()->with('success', 'تم إضافة عرضك بنجاح ');
+
+        // return redirect()->route("posts.show", $postId);
     }
 
     /**
@@ -98,7 +101,7 @@ class CommentController extends Controller
         ]);
         $comment->update($request->all());
         $comment->save();
-        return redirect()->route("posts.show", $comment->post_id);
+        return back();
     }
 
     /**

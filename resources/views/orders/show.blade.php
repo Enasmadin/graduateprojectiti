@@ -42,7 +42,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                       
+
 
 
 
@@ -61,32 +61,32 @@
                         <div style="max-width: 540px;" class="card">
                             <div class="row g-0 text-white bg-dark">
                                 <div class="col-md-4">
-                                    <img src="{{ asset('productpic') . '/' . $order->post->product->product_pic }}" alt="Card image"
-                                        class="img-fluid rounded-start h-100 w-100">
+                                    <img src="{{ asset('productpic') . '/' . $order->post->product->product_pic }}"
+                                        alt="Card image" class="img-fluid rounded-start h-100 w-100">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{$order->post->product->name }}</h5>
+                                        <h5 class="card-title">{{ $order->post->product->name }}</h5>
                                         <p class="card-text">
                                             <small class="fw-bold">السعر: </small>
-                                            {{$order->post->product->price }}
+                                            {{ $order->post->product->price }}
                                         </p>
                                         <p class="card-text">
                                             <small class="fw-bold">الوزن: </small>
-                                            {{$order->post->product->weight }}
+                                            {{ $order->post->product->weight }}
                                         </p>
                                         <p class="card-text">
                                             <small class="fw-bold">الكمية: </small>
-                                            {{$order->post->product->quantity }}
+                                            {{ $order->post->product->quantity }}
                                         </p>
                                         <p class="card-text">
                                             <small class="text-muted">
                                                 <small class="fw-bold">من: </small>
-                                                {{$order->post->from }}</small>
+                                                {{ $order->post->from }}</small>
                                             ||
                                             <small class="text-muted">
                                                 <small class="fw-bold">الى: </small>
-                                                {{$order->post->to}}</small>
+                                                {{ $order->post->to }}</small>
                                         </p>
                                     </div>
                                 </div>
@@ -101,8 +101,8 @@
                         <div style="" class="card text-white bg-primary ">
                             <div class="card-block">
 
-                                
-                  
+
+
 
                                 <div class="card-body">
                                     <h4 class="card-title">

@@ -12,5 +12,5 @@
             </div>
         </div>
     </div>
- </footer>
- <!-- Footer closed -->
+</footer>
+<!-- Footer closed -->

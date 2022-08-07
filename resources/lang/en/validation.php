@@ -201,6 +201,10 @@ return [
 
         'description' => 'الوصف',
         'description' => 'الوصف',
+
+
+        'yesterday' => 'الأمس',
+        'delivery date' => 'تاريخ التسليم'
     ],
 
 ];

@@ -5,10 +5,10 @@ header start-->
 <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <!-- logo -->
     <div class="text-left navbar-brand-wrapper">
-        <a class="navbar-brand brand-logo" href="{{ url('/dashboard') }}">&nbsp;
-            <em>توصيله</em></a>
-        <a class="navbar-brand brand-logo-mini" href="{{ url('/dashboard') }}">&nbsp;
-            <em>توصيله</em></a>
+        <a class="navbar-brand brand-logo"">&nbsp;
+            <em>طلبية</em></a>
+        <a class="navbar-brand brand-logo-mini"">&nbsp;
+            <em>طلبية</em></a>
 
 
     </div>
