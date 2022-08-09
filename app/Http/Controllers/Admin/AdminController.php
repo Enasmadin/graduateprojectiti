@@ -45,7 +45,7 @@ class AdminController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone_number' => ['required', 'numeric', 'min:11',  'unique:users,phone_number',],
+            'phone_number' => ['required', 'numeric', 'min:11',  'unique:users,phone_number', 'digits:11'],
             'city' => ['required', 'string'],
             'role' => ['required'],
             'profile_pic' => ['required', 'image', 'mimes:jpg,png,jpeg,max:5048'],

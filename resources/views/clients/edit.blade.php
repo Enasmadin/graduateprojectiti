@@ -29,11 +29,11 @@
 
 
                             <div class="col-12">
-                                <label for="address" class="form-label text-primary">{{ __('العنوان') }}</label>
-                                <input type="text" class="form-control @error('address') is-invalid @enderror"
-                                    id="address" name="address" placeholder="برجاء ادخال العنوان"
-                                    value="{{ old('address', $clients->adress) }}">
-                                @error('address')
+                                <label for="adress" class="form-label text-primary">{{ __('العنوان') }}</label>
+                                <input type="text" class="form-control @error('adress') is-invalid @enderror"
+                                    id="adress" name="adress" placeholder="برجاء ادخال العنوان"
+                                    value="{{ old('adress', $clients->adress) }}">
+                                @error('adress')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -45,7 +45,7 @@
                                 <label for="phone_number" class="form-label text-primary">{{ __('المحمول') }}</label>
                                 <input type="text" class="form-control @error('phone_number') is-invalid @enderror"
                                     id="phone_number" name="phone_number" placeholder="برجاء ادخال رقم المحمول"
-                                    value="{{ old('phone_number', $clients->phone_number) }}">
+                                    value="{{ old('phone_number', '0' . $clients->phone_number) }}">
                                 @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

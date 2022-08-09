@@ -40,8 +40,8 @@
                             <div class="col-12">
                                 <label for="phone_number" class="form-label text-primary">{{ __('رقم المحمول') }}</label>
                                 <input type="text" class="form-control @error('phone_number') is-invalid @enderror"
-                                    id="phone_number" placeholder="الكمية الإفتراضيه ب 1" name="phone_number"
-                                    value="{{ old('phone_number', $user->phone_number) }}">
+                                    id="phone_number" name="phone_number"
+                                    value="{{ old('phone_number', '0' . $user->phone_number) }}">
                                 @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

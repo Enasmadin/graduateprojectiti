@@ -54,7 +54,7 @@ class AdminProductController extends Controller
             'name' => ['required', 'min:3', 'max:255'],
             'price' => ['required', 'numeric', 'min:1'],
             'weight' => ['nullable', 'numeric', 'min:1'],
-            'quantity' => ['required', 'numeric', 'min:1'],
+            'quantity' => ['nullable', 'numeric', 'min:1'],
             'category_id' => ['required'],
             'product_pic' => ['required', 'mimes:jpg,png,jpeg,max:5048'],
         ]);
@@ -65,7 +65,10 @@ class AdminProductController extends Controller
         $productPic->move(public_path('productpic'), $productPicName);
 
 
-        $product = new Product($request->except('product_pic'));
+        $product = new Product($request->except('product_pic', 'quantity'));
+        if ($request->quantity) {
+            $product->quantity = $request->quantity;
+        }
         $product->user_id = $request->user_id;
         $product->product_pic = $productPicName;
         $product->save();
@@ -107,7 +110,7 @@ class AdminProductController extends Controller
             'name' => ['required', 'min:3', 'max:255'],
             'price' => ['required', 'numeric', 'min:1'],
             'weight' => ['nullable', 'numeric', 'min:1'],
-            'quantity' => ['required', 'numeric', 'min:1'],
+            'quantity' => ['nullable', 'numeric', 'min:1'],
             'category_id' => ['required'],
             'product_pic' => ['nullable', 'mimes:jpg,png,jpeg,max:5048'],
         ]);
@@ -115,7 +118,6 @@ class AdminProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->weight = $request->weight;
-        $product->quantity = $request->quantity;
         $product->category_id = $request->category_id;
         $product->user_id = $request->user_id;
 
@@ -129,6 +131,11 @@ class AdminProductController extends Controller
 
             //            save to table
             $product->product_pic = $newName;
+        }
+        if ($request->quantity) {
+            $product->quantity = $request->quantity;
+        } else {
+            $product->quantity = 1;
         }
 
         $product->update();

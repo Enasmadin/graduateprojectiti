@@ -39,27 +39,22 @@
         <hr>
 
 
-        <div class="py-5" style="min-height : 2000px">
+        <div class="py-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-sm-12 col-md-9 offset-md-1 my-4">
 
-
-
-
-                        <div class="card text-white bg-dark mb-3 py-3">
-                            <div class="card-header"> اسم العميل: {{ $order->client->name }}</div>
+                        <div class="card border-primary">
+                            <div class="card-header text-white bg-primary"> اسم العميل: {{ $order->client->name }}</div>
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <p class="card-text">العنوان: {{ $order->client->adress }}</p>
                                 <p class="card-text">رقم الموبايل: 0{{ $order->client->phone_number }}</p>
                             </div>
                         </div>
-
-
-
-
-                        <div style="max-width: 540px;" class="card">
+                    </div>
+                    <div class="col-sm-12 col-md-9 offset-md-1 my-4">
+                        <div class="card">
                             <div class="row g-0 text-white bg-dark">
                                 <div class="col-md-4">
                                     <img src="{{ asset('productpic') . '/' . $order->post->product->product_pic }}"
@@ -93,17 +88,12 @@
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
 
-                    <div class="col-md-8">
-                        <div style="" class="card text-white bg-primary ">
+
+                    <div class="col-sm-12 col-md-9 offset-md-1 my-4">
+                        <div style="" class="card text-white bg-dark text-center ">
                             <div class="card-block">
-
-
-
 
                                 <div class="card-body">
                                     <h4 class="card-title">
@@ -131,6 +121,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
 
 
@@ -239,7 +230,7 @@
 
 
 
-                {{-- <div class="card border-dark mb-3" style="max-width: 18rem;">
+            {{-- <div class="card border-dark mb-3" style="max-width: 18rem;">
                             <div class="card-header">{{ $order->client->name }}</div>
                             <div class="card-body text-dark">
                                 <h5 class="card-title">Dark card title</h5>
@@ -249,7 +240,7 @@
                         </div> --}}
 
 
-                {{-- <div class="card text-white bg-dark mb-3">
+            {{-- <div class="card text-white bg-dark mb-3">
                             <div class="card-header">{{ $order->client->name }}</div>
                             <div class="card-body">
                                 <h5 class="card-title">Dark card title</h5>
@@ -258,7 +249,7 @@
                             </div>
                         </div> --}}
 
-                {{-- <div class="card text-white bg-secondary mb-3">
+            {{-- <div class="card text-white bg-secondary mb-3">
                             <div class="card-header">{{ $order->client->name }}</div>
                             <div class="card-body">
                                 <h5 class="card-title">Dark card title</h5>
@@ -267,14 +258,14 @@
                             </div>
                         </div> --}}
 
-                {{-- </div>
+            {{-- </div>
 
                     <div class="col-md-4"> --}}
 
 
 
 
-                {{-- <div class="card mb-3" style="max-width: 540px;">
+            {{-- <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img src="{{ asset('productpic') . '/' . $order->post->product->product_pic }}" alt="Card image"
@@ -309,7 +300,7 @@
                 </div> --}}
 
 
-                {{-- <div class="card"style="width:300px; height:350px">
+            {{-- <div class="card"style="width:300px; height:350px">
                             <div class="card-block ">
                                 <img class="card-img-top"
                                     src="{{ asset('productpic') . '/' . $order->post->product->product_pic }}"
@@ -323,9 +314,9 @@
                                 </div>
                             </div>
                         </div> --}}
-                {{-- </div> --}}
+            {{-- </div> --}}
 
-                {{-- <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <div class="card" style="width:300px; height:350px">
                     <div class="card-block">
 
@@ -352,8 +343,8 @@
                     </div>
                 </div>
             </div> --}}
-            </div>
         </div>
+    </div>
     </div>
 
 

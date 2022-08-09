@@ -9,7 +9,6 @@
 
 
 @section('content')
-
     <div class="container">
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block alert-dismissible fade show">
@@ -129,67 +128,91 @@
                 <!-- /.card -->
 
         </section>
+
         <div class="row text-right m-4">
+
             <div class="col-sm-12 my-2">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-text">
-                            <div class="row">
-                                @foreach ($UserPosts as $post)
-                                    <div class="col " style="width: 23rem;">
-                                        <div class="card shadow-sm text-center h-100">
-                                            <img src="{{ asset('productpic') . '/' . $post->product->product_pic }}"
-                                                class="card-img-top img-fluid" alt="{{ $post->product->name }}"
-                                                style="height:200px; object-fit:cover;">
+                        @if ($UserPosts->count() === 0)
+                            <h4 class="text-center">
+                                لا يوجد منشورات أخرى لهذا التاجر
+                            </h4>
+                    </div>
+                </div>
+            @else
+                <div class="card-text">
+                    <div class="row">
+                        @foreach ($UserPosts as $post)
+                            <div class="col-md-4 col-sm-12">
+                                <div class="card shadow-sm text-center h-100">
+                                    <img src="{{ asset('productpic') . '/' . $post->product->product_pic }}"
+                                        class="card-img-top img-fluid" alt="{{ $post->product->name }}"
+                                        style="height:200px; object-fit:cover;">
 
-                                            <div class="card-body">
-                                                <h1 style="color: #007EA7">{{ $post->title }}</h1>
-                                                <p class="card-text">
-                                                    <span class="text-muted">{{ __('الوصف: ') }}</span>
-                                                    {{ Str::words($post->description, 4) }}
-                                                </p>
-                                                <p class="card-text">
-                                                    <span class="text-muted">
-                                                        {{ __('التوصيل من: ') }}
-                                                    </span>
-                                                    {{ $post->from }}
-                                                </p>
-                                                <p class="card-text">
-                                                    <span class="text-muted">{{ __('إلى: ') }}
-                                                    </span>
-                                                    {{ $post->to }}
-                                                </p>
+                                    <div class="card-body">
+                                        <h1 style="color: #007EA7">{{ $post->title }}</h1>
+                                        <p class="card-text">
+                                            <span class="text-muted">{{ __('الوصف: ') }}</span>
+                                            {{ Str::words($post->description, 4) }}
+                                        </p>
+                                        <p class="card-text">
+                                            <span class="text-muted">
+                                                {{ __('التوصيل من: ') }}
+                                            </span>
+                                            {{ $post->from }}
+                                        </p>
+                                        <p class="card-text">
+                                            <span class="text-muted">{{ __('إلى: ') }}
+                                            </span>
+                                            {{ $post->to }}
+                                        </p>
 
-                                                <div class="btn-group">
-                                                    <a class="btn btn-primary" href="{{ route('posts.show', $post->id) }}">
-                                                        {{ __('عرض') }}
+                                        <div class="btn-group">
+                                            <a class="btn btn-outline-primary" href="{{ route('posts.show', $post->id) }}">
+                                                {{ __('عرض') }}
+                                            </a>
+                                            {{-- //FIXME --}}
+                                            {{-- @vendor --}}
+                                            @auth
+
+                                                @if (auth()->user()->id === $post->user_id)
+                                                    <a class="btn btn-outline-primary"
+                                                        href="{{ route('posts.edit', $post->id) }}">
+                                                        {{ __('تعديل') }}
                                                     </a>
-                                                    {{-- //FIXME --}}
-                                                    {{-- @vendor --}}
-                                                    @auth
+                                                    <a class="btn btn-outline-danger"
+                                                        href="{{ route('posts.destroy', $post->id) }}"
+                                                        onclick="event.preventDefault();
+                                                document.getElementById('delete{{ $post->id }}').submit();">
 
-                                                        @if (auth()->user()->id === $post->user_id)
-                                                            <a class="btn btn-outline-primary"
-                                                                href="{{ route('posts.edit', $post->id) }}">
-                                                                {{ __('تعديل') }}
-                                                            </a>
-                                                        @endif
-                                                    @endauth
-                                                    {{-- @endvendor --}}
-                                                </div>
-                                            </div>
-
-
+                                                        حذف
+                                                    </a>
+                                                    <form id="delete{{ $post->id }}"
+                                                        action="{{ route('posts.destroy', $post->id) }}" method="POST"
+                                                        class="d-none">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                    </form>
+                                                @endif
+                                            @endauth
+                                            {{-- @endvendor --}}
                                         </div>
                                     </div>
-                                @endforeach
+
+
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-
         </div>
+    </div>
+
+    </div>
+    @endif
+
     </div>
 
     <!-- /.content -->
@@ -279,8 +302,10 @@
                                         <img src="{{ asset('profilepic') . '/' . $comment->user->profile_pic }}"
                                             class="card-img-top  rounded-circle" alt="..."
                                             style="width:70px; height:70px;"></span>
-
-                                    <span class="fw-bold fs-5">{{ $comment->user->name }}</span>
+                                    <a class="text-decoration-none"
+                                        href="{{ route('profiles.show', $comment->user->id) }}">
+                                        <span class="fw-bold fs-5">{{ $comment->user->name }}</span>
+                                    </a>
                                 </div>
                                 <p class="card-text">
                                     <span class="text-muted">الوصف:</span>
@@ -379,7 +404,6 @@
                 @endforeach
             </div>
         </section>
-
     @endsection
 
 

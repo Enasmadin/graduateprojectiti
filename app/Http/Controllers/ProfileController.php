@@ -89,7 +89,7 @@ class ProfileController extends Controller
         $request->validate([
             'city' => ['required', 'min:3'],
             'email' => ['required', 'email'],
-            'phone_number' => ['numeric'],
+            'phone_number' => ['numeric', 'digits:11'],
             'profile_pic' => ['mimes:jpg,png,jpeg,max:5048'],
         ]);
 

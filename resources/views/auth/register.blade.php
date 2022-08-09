@@ -122,31 +122,33 @@
 
                                     <div class=" mb-2">
                                         <div class="form-check form-check-inline my-3 me-4">
-                                            <input {{old('gender') == 'female' ? 'checked' : ''}} class="form-check-input @error('gender') is-invalid @enderror"
+                                            <input {{ old('gender') == 'female' ? 'checked' : '' }}
+                                                class="form-check-input @error('gender') is-invalid @enderror"
                                                 type="radio" name="gender" id="femaleGender" value="female" />
                                             <label class="form-check-label" for="femaleGender">{{ __('أنثى') }}</label>
                                             @error('gender')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        </div>
-                                        <div class="form-check form-check-inline my-3 me-4">
-                                            <input {{old('gender') == 'male' ? 'checked' : ''}} class="form-check-input @error('gender') is-invalid @enderror"
-                                                type="radio" name="gender" id="maleGender" value="male" />
-                                            <label class="form-check-label" for="maleGender">{{ __('ذكر') }}</label>
-                                            @error('gender')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                            <div>
-
-                                                @error('gender')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
+                                        </div>
+                                        <div class="form-check form-check-inline my-3 me-4">
+                                            <input {{ old('gender') == 'male' ? 'checked' : '' }}
+                                                class="form-check-input @error('gender') is-invalid @enderror"
+                                                type="radio" name="gender" id="maleGender" value="male" />
+                                            <label class="form-check-label" for="maleGender">{{ __('ذكر') }}</label>
+                                            @error('gender')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            <div>
+
+                                                @error('gender')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -156,8 +158,8 @@
 
                                     <div class="row">
                                         <div class="mb-4">
-                                            <select class="form-select @error('city') is-invalid @enderror"
-                                                name="city" value="{{old('city') }}">
+                                            <select class="form-select @error('city') is-invalid @enderror" name="city"
+                                                value="{{ old('city') }}">
                                                 <option disabled selected>المدينة</option>
                                                 <option value="cairo">القاهرة</option>
                                                 <option value="minya">المنيا</option>
@@ -211,12 +213,14 @@
 
                                     <div class="d-flex align-items-center mb-2">
                                         <div class="form-check form-check-inline my-3 me-4">
-                                            <input class="form-check-input @error('role') is-invalid @enderror"
+                                            <input {{ old('role') == 'vendor' ? 'checked' : '' }}
+                                                class="form-check-input @error('role') is-invalid @enderror"
                                                 type="radio" name="role" id="vendorUser" value="vendor" />
                                             <label class="form-check-label" for="vendorUser">{{ __('تاجر') }}</label>
                                         </div>
                                         <div class="form-check form-check-inline my-3 me-4">
-                                            <input class="form-check-input @error('role') is-invalid @enderror"
+                                            <input {{ old('delivery') == 'delivery' ? 'checked' : '' }}
+                                                class="form-check-input @error('role') is-invalid @enderror"
                                                 type="radio" name="role" id="deliveryUser" value="delivery" />
                                             <label class="form-check-label"
                                                 for="deliveryUser">{{ __('مندوب توصيل') }}</label>

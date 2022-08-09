@@ -32,30 +32,26 @@
 
 
 
-    <section class="about section-padding" id="section_2">
+    <section class="about section-padding mt-3 mb-5 bg-white" id="section_2">
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-10 col-12">
-                    <h2 class="my-4">
-                        <u class="text-info">{{ __('قصتنا') }}</u>
-                    </h2>
+                <div class=" col-12">
+                    <h1 class="m-5 text-center ">
+                        <u class="text-white text-decoration-none  bg-info p-2 rounded-3">{{ __('قصتنا') }}</u>
+                    </h1>
                 </div>
 
-                <div class="col-lg-6 col-12">
-                    <h3 class="mb-3">{{ __('أهمية نقل بضاعتكم عبر الإنترنت') }}</h3>
 
-                    <p>{{ __('الآن يمكنك أن تنقل أي شيء بأمان') }}</p>
+                <div class="col-lg-12 col-12 mt-5 mt-lg-0  mb-5">
+                    <h4 class="mt-3 text-center">
+                        الآن يمكنك أن تنقل أي شيء بأمان عن طريق
 
-
-                </div>
-
-                <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-                    <h4>
                         طلبية هو تطبيق يتيح لك توصيل طلبياتك إلى زبائنك بشكل احترافي آمن
+
                     </h4>
 
-                    <div class="avatar-group border-top py-5 mt-5">
+                    {{-- <div class="avatar-group border-top py-5 mt-5">
                         <img src="{{ asset('images/avatar/signup.png') }}" class="img-fluid avatar-image" alt="">
 
                         <img src="{{ asset('images/avatar/login.png" class="img-fluid avatar-image avatar-image-left') }}"
@@ -67,8 +63,8 @@
                         <img src="{{ asset('images/avatar/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction.jpg" class="img-fluid avatar-image avatar-image-left') }}"
                             alt="">
 
-                        {{-- <p class="d-inline">120+ People are using this web </p> --}}
-                    </div>
+                        <p class="d-inline">120+ People are using this web </p>
+                    </div> --}}
                 </div>
 
             </div>
@@ -76,126 +72,103 @@
     </section>
 
 
-    <section class="speakers section-padding" id="section_3">
+    <section class="speakers section-padding  " id="section_3">
         <div class="container">
             <div class="row">
-
-                <div class="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
-                    <div class="speakers-text-info">
-                        <h2 class="mb-4">
-                            كيفية استخدام تطبيق
-                            <u class="text-info">
-                                طلبية
-                            </u>
-                        </h2>
-
-                        <p>في (6 خطوات) يمكنك استخدامه</p>
-                    </div>
+                <div class=" col-12">
+                    <h1 class="m-3 p-3 text-center ">
+                        <u class="text-white text-decoration-none  bg-info p-2 rounded-3">كيفية استخدام تطبيق</u>
+                    </h1>
+                    <p class="text-center mb-5"> تقدر تستخدمه عن طريق اتباع 4 خطوات</p>
                 </div>
 
-                <div class="col-lg-6 col-12">
-                    <div class="speakers-thumb">
-                        <img src="{{ asset('images/avatar/signup.png') }}" class="img-fluid speakers-image" alt="">
+            </div>
 
-                        <small class="speakers-featured-text">Featured</small>
 
-                        <div class="speakers-info">
 
-                            <h5 class="speakers-title mb-0">الخطوة الأولى</h5>
+            <div class="col-lg-12 col-12">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="speakers-thumb speakers-thumb-small">
+                            <img src="{{ asset('images/avatar/register.png') }}" style=" width:200px; height:150px"
+                                class="img-fluid speakers-image spekers-s" alt="">
 
-                            <p class="speakers-text mb-0">إنشاء حساب</p>
+                            <div class="speakers-info">
+                                <h6 class="speakers-title mb-0 text-info"> الخطوه الأولي </h6>
 
-                            <ul class="social-icon">
-                                <li><a href="#" class="social-icon-link bi-facebook"></a></li>
+                                <p class="speakers-text pb-5"> انشاء حساب جديد </p>
 
-                                <li><a href="#" class="social-icon-link bi-instagram"></a></li>
 
-                                <li><a href="#" class="social-icon-link bi-google"></a></li>
-                            </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="speakers-thumb speakers-thumb-small">
+                            <img src="{{ asset('images/avatar/login.png') }} " style=" width:200px; height:150px"
+                                class="img-fluid speakers-image spekers-s" alt="">
 
-                <div class="col-lg-12 col-12">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <div class="speakers-thumb speakers-thumb-small">
-                                <img src="{{ asset('images/avatar/login.png') }}"
-                                    class="img-fluid speakers-image spekers-s" alt="">
+                            <div class="speakers-info">
+                                <h6 class="speakers-title mb-0 text-info"> الخطوه الثانيه
 
-                                <div class="speakers-info">
-                                    <h5 class="speakers-title mb-0">الخطوة الثانية</h5>
+                                </h6>
 
-                                    <p class="speakers-text mb-0">تسجيل دخول</p>
+                                <p class="speakers-text pb-5"> تسجيل الدخول </p>
 
 
-                                </div>
                             </div>
                         </div>
-
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <div class="speakers-thumb speakers-thumb-small">
-                                <img src="{{ asset('images/avatar/comment.png') }}"
-                                    class="img-fluid speakers-image  spekers-s" alt="">
-
-                                <div class="speakers-info">
-                                    <h5 class="speakers-title mb-0">الخطوة الثالثة</h5>
-
-                                    <p class="speakers-text mb-0">إذا سجلت كمندوب، فيمكنك تقديم عروض على توصيل الطلبيات</p>
+                    </div>
 
 
-                                </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="speakers-thumb speakers-thumb-small">
+                            <img src="{{ asset('images/avatar/offer.png') }}" class="img-fluid speakers-image  spekers-s"
+                                alt="" style=" width:200px; height:150px">
+
+                            <div class="speakers-info">
+                                <h6 class="speakers-title text-info ">الخطوة الثالثة</h6>
+
+                                <p class="speakers-text pb-5">إذا سجلت كمندوب، فيمكنك تقديم عروض على توصيل الطلبيات</p>
+
+
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <div class="speakers-thumb speakers-thumb-small">
-                                <img src="{{ asset('images/avatar/Screenshot (44).png') }}"
-                                    class="img-fluid speakers-image  spekers-s" alt="">
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="speakers-thumb speakers-thumb-small">
+                            <img src="{{ asset('images/avatar/add_product.png') }}" style=" width:200px; height:150px"
+                                class="img-fluid speakers-image  spekers-s" alt="">
 
-                                <div class="speakers-info">
-                                    <h5 class="speakers-title mb-0">الخطوة الرابعة</h5>
+                            <div class="speakers-info">
+                                <h6 class="speakers-title text-info">الخطوة الرابعة</h5>
 
-                                    <p class="speakers-text mb-0">إذا سجلت كتاجر، يمكنك إضافة منتج وعرضه في منشور ومن
+                                    <p class="speakers-text pb-5">إذا سجلت كتاجر، يمكنك إضافة منتج وعرضه في منشور ومن
                                         كطلبية
                                     </p>
 
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <div class="speakers-thumb speakers-thumb-small">
-                                <img src="{{ asset('images/avatar/Screenshot (44).png') }}"
-                                    class="img-fluid speakers-image spekers-s" alt="">
-
-                                <div class="speakers-info">
-                                    <h5 class="speakers-title mb-0">الخطوة الخامسة</h5>
-
-                                    <p class="speakers-text mb-0">ثم يمكنك تقييم المندوب كما يمكنه ذلك أيضا</p>
-
-
-                                </div>
                             </div>
                         </div>
                     </div>
 
+
                 </div>
+
             </div>
+        </div>
     </section>
 
 
 
 
-    <section class="contact section-padding" id="section_7">
+    <section class="about section-padding p-3  bg-white" id="section_2">
 
         <div class="container">
-            <div class="row my-5">
+            <div class="row mt-5">
                 <div class="container">
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success alert-block alert-dismissible fade show">
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <strong>{{ $message }}</strong>
                         </div>
                     @endif
@@ -241,6 +214,7 @@
             </div>
         </div>
     </section>
+
 
 
     <!-- JAVASCRIPT FILES -->
