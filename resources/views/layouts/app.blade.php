@@ -112,7 +112,7 @@
                                             {{ __('كل الطلبيات') }}
                                         </a>
 
-                                        <li>
+                                    <li>
                                         @authVendor
                                         <a class="dropdown-item " href="{{ route('vendors.index') }}">
                                             {{ __('الطلبيات المعلقة') }}
@@ -124,23 +124,22 @@
                             </li>
                             @authDelivery
 
-                                <a class="nav-item nav-link" href="{{route('wishlist.index')}}" role="button"
-                                    >
-                                    المفضله
-                                    <span class="badge badge-pill badge-danger" >
-                                        {{auth()->user()->wishlists->count()}}
-                                    </span>
-                                </a>
+                            <a class="nav-item nav-link position-relative" href="{{ route('wishlist.index') }}"
+                                role="button">
+                                المفضلة
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {{ auth()->user()->wishlists->count() }}
+                                </span>
+                            </a>
 
                             @endauthDelivery
 
                             @if (auth()->user()->is_admin == '1')
-
-                            <a class="nav-item nav-link" href="{{route('admin.products.index')}}" role="button"
-                            >
-                            لوحة التحكم
-                        </a>
-                        @endif
+                                <a class="nav-item nav-link" href="{{ route('admin.products.index') }}" role="button">
+                                    لوحة التحكم
+                                </a>
+                            @endif
                         @endauth
                     </ul>
 
@@ -172,7 +171,6 @@
                                             <small class="text-muted fw-bold">
                                                 @if (Auth::user()->role === 'vendor')
                                                     تاجر
-
                                                 @else
                                                     مندوب
                                                 @endif
