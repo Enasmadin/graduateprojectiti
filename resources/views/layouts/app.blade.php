@@ -127,8 +127,7 @@
                             <a class="nav-item nav-link position-relative" href="{{ route('wishlist.index') }}"
                                 role="button">
                                 المفضلة
-                                <span
-                                    class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger">
+                                <span class="position-absolute top-0 translate-middle badge rounded-pill bg-danger">
                                     {{ auth()->user()->wishlists->count() }}
                                 </span>
                             </a>
