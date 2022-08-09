@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryContoller;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\Admin\AdminClientController;
 use App\Http\Controllers\Admin\AdminController;
@@ -101,6 +102,9 @@ Route::get('/test', function () {
     // dd($user);
     return view('test', ['users' => $users]);
 });
+
+
+Route::post('/rate', [RatingController::class, 'store']);
 
 
 // Route::post('/testawy/{id}', [PostController::class, 'storecomment']);

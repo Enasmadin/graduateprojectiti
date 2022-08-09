@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rate;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -31,8 +32,13 @@ class ProfileController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
+        // $ratings = Rate::where('delivery_id', $user->id)->Orwhere('vendor_id', $user->id)->get();
+        // dd($ratings->where('rate_value_vendor', NULL)->get());
+        // if ($ratings->rate_value_vendor === NULL) {
+        //     # code...
+        // }
         return view('profiles.show', [
-            'user' => $user
+            'user' => $user,
         ]);
     }
 

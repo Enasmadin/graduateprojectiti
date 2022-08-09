@@ -8,11 +8,11 @@
                     <p class="mt-2 ">اسم التاجر</p>
                     <img src="{{ asset('profilepic') . '/' . $order->post->user->profile_pic }}" alt="Vendor pic"
                         class="rounded-circle m-auto mt-3" style="width:100px; height:100px; object-fit:cover">
-
-                    <h5 class="card-title display-6 text-capitalize">{{ $order->post->user->name }}</h5>
-
+                    <a class="text-decoration-none" href="{{ route('profiles.show', $order->post->user->id) }}">
+                        <h5 class="card-title display-6 text-capitalize">{{ $order->post->user->name }}</h5>
+                    </a>
                     <div class="card-body">
-                        <div class="my-1">{{ $order->post->user->phone_number }}</div>
+                        <div class="my-1">0{{ $order->post->user->phone_number }}</div>
                         <div class="my-1">{{ $order->post->user->email }}</div>
                     </div>
 
@@ -24,11 +24,12 @@
                     <p class="mt-2 ">اسم المندوب</p>
                     <img src="{{ asset('profilepic') . '/' . $order->comment->user->profile_pic }}" alt="Delivery pic"
                         class="rounded-circle m-auto mt-3" style="width:100px;  height:100px;">
-
-                    <h5 class="card-title display-6 text-capitalize">{{ $order->comment->user->name }}</h5>
+                    <a class="text-decoration-none" href="{{ route('profiles.show', $order->comment->user->id) }}">
+                        <h5 class="card-title display-6 text-capitalize">{{ $order->comment->user->name }}</h5>
+                    </a>
 
                     <div class="card-body">
-                        <div class="my-1">{{ $order->comment->user->phone_number }}</div>
+                        <div class="my-1">0{{ $order->comment->user->phone_number }}</div>
                         <div class="my-1">{{ $order->comment->user->email }}</div>
                     </div>
                 </div>
@@ -51,7 +52,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <p class="card-text">العنوان: {{ $order->client->adress }}</p>
-                                <p class="card-text">رقم الموبايل: {{ $order->client->phone_number }}</p>
+                                <p class="card-text">رقم الموبايل: 0{{ $order->client->phone_number }}</p>
                             </div>
                         </div>
 
@@ -111,7 +112,7 @@
                                     </h4>
 
                                     <p class="card-text">
-                                        <small class="fw-bold">السعر:</small>
+                                        <small class="fw-bold">سعر المنتج:</small>
                                         {{ $order->post->product->price }}
                                     </p>
                                     <small class="fw-bold"></small>

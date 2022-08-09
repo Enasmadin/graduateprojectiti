@@ -15,7 +15,8 @@ class RatingController extends Controller
         $authId = auth()->user()->id;
         // dd($request);
 
-        $veriOrder = Order::whereIn('delivery_id', [$userId, $authId])->whereIn('vendor_id', [$userId, $authId])->get();
+        $veriOrder = Order::whereIn('delivery_id', [$userId, $authId])->whereIn('vendor_id', [$userId, $authId])->exists();
+        // dd($veriOrder);
 
         if ($veriOrder) {
             if (auth()->user()->role === 'vendor') {
@@ -24,14 +25,14 @@ class RatingController extends Controller
                     $rateExist->update([
                         'rate_value_delivery' => $rateValue
                     ]);
-                    return redirect()->back();
+                    return redirect()->back()->with('success', 'تم تحديث تقييمك بنجاح');
                 } else {
                     Rate::create([
                         'rate_value_delivery' => $rateValue,
                         'vendor_id' => $authId,
                         'delivery_id' => $userId
                     ]);
-                    return redirect()->back();
+                    return redirect()->back()->with('success', 'تم إضافة تقييمك بنجاح');
                 }
             } else {
                 $rateExist = Rate::where('vendor_id', $userId)->where('delivery_id', $authId)->first();
@@ -40,18 +41,18 @@ class RatingController extends Controller
                     $rateExist->update([
                         'rate_value_vendor' => $rateValue
                     ]);
-                    return redirect()->back();
+                    return redirect()->back()->with('success', 'تم تحديث تقييمك بنجاح');
                 } else {
                     Rate::create([
                         'rate_value_vendor' => $rateValue,
                         'vendor_id' => $userId,
                         'delivery_id' => $authId
                     ]);
-                    return redirect()->back();
+                    return redirect()->back()->with('success', 'تم إضافة تقييمك بنجاح');
                 }
             }
         } else {
-            return redirect('/posts');
+            return redirect()->back()->with('fail', 'لتقيم هذا الشخص يجب أن يوجد بينكما طلبية');
         }
     }
 }

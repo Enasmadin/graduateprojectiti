@@ -29,6 +29,10 @@
             transform: scale(0.8);
             transition: 0.3s ease;
         }
+
+        .checked {
+            color: #ffd900;
+        }
     </style>
 @endsection
 
@@ -77,6 +81,18 @@
 
 
     <div class="container">
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block alert-dismissible fade show">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+        @if ($message = Session::get('fail'))
+            <div class="alert alert-danger alert-block alert-dismissible fade show">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
         <div class="row my-3">
             <h2 class="text-center text-primary">
                 @vendor($user)
@@ -104,16 +120,25 @@
                             @endif
                         @endauth
                     </h4>
+                    {{-- <div class="rating">
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
 
+                        <span>{{ $ratings->count() }} تقييمات</span>
+                    </div> --}}
 
-                    @auth
+                    {{-- @auth
 
                         @if (auth()->user()->id != $user->id)
-                            {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        {{ __('تقييم') }}
-                    </button> --}}
+                            <button type="button" class="mt-4 btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                {{ __('تقييم') }}
+                            </button>
                         @endif
-                    @endauth
+                    @endauth --}}
 
                 </div>
 

@@ -78,7 +78,7 @@ class RegisterController extends BaseController
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $user = Auth::user();
-            dd($user);
+            // dd($user);
             $success['token'] =  $user->createToken('token')->plainTextToken;
             $success['name'] =  $user->name;
 
@@ -90,10 +90,11 @@ class RegisterController extends BaseController
 
     public function logout()
     {
-        $user = auth()->user();
+        $user = Auth::user();
         dd($user);
         return [
             'message' => 'user logged out'
         ];
     }
+    // 3|vHAuQ7z54Qn2k7UabuaBVkpPjz0cpS1TZNyrd9wq
 }
