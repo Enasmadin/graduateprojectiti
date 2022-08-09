@@ -204,7 +204,10 @@ return [
 
 
         'yesterday' => 'الأمس',
-        'delivery date' => 'تاريخ التسليم'
+        'delivery date' => 'تاريخ التسليم',
+
+
+        'is_admin' => 'أدمن'
     ],
 
 ];

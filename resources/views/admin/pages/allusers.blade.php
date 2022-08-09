@@ -82,23 +82,25 @@
                                             src="{{ asset('nationalidpic') . '/' . $user->national_id_second_pic }}"
                                             alt=""></td>
                                     <td>{{ $user->city }}</td>
-                                    <td>{{ $user->phone_number }}</td>
+                                    <td>0{{ $user->phone_number }}</td>
                                     <td>{{ $user->is_admin }}</td>
 
 
 
                                     <td>
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                            data-target="#edit{{ $user->id }}" title="edit" style="width: 34px; height: 34px; margin:1px; display: inline-block;"><i
+                                        <button type="button" class="btn btn-info " data-toggle="modal"
+                                            data-target="#edit{{ $user->id }}" title="edit"
+                                            style="width: 34px; height: 34px; margin:1px; display: inline-block;"><i
                                                 class="fa fa-edit"></i></button>
 
 
-                                        <form action="{{ route('admines.destroy', $user->id) }}" method="POST" style="width: 34px; height: 34px; margin:1px; display: inline-block;">
-                                             @csrf
+                                        <form action="{{ route('admines.destroy', $user->id) }}" method="POST"
+                                            style="width: 34px; height: 34px; margin:1px; display: inline-block;">
+                                            @csrf
                                             @method('DELETE')
 
-                                            <button type="submit" class="btn btn-danger" >
-                                            <i class="fa fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fa fa-trash"></i></button>
 
                                         </form>
 
@@ -132,162 +134,114 @@
                                                 <div class="modal-body">
                                                     <!-- edit form   here -->
 
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="d-flex flex-row align-items-center mb-4">
-                                                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                                                <div class="form-outline flex-fill mb-0">
-                                                                    <label class="form-label"
-                                                                        for="name">{{ __('Name') }}</label>
+                                                    <div class="raw container">
 
-                                                                    <input type="text" id="name" name="name"
-                                                                        class="form-control @error('name') is-invalid @enderror"
-                                                                        value="{{ $user->name ? $user->name : old('name') }}">
-                                                                    @error('name')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                    @enderror
-                                                                </div>
+                                                        <div class="col-12">
+                                                            <label class="form-label text-primary" for="name">الاسم
+                                                                كامل</label>
 
-                                                            </div>
-
-                                                            <div class="d-flex flex-row align-items-center mb-4">
-                                                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-
-                                                                <div class="form-outline flex-fill mb-0">
-                                                                    <label class="form-label"
-                                                                        for="email">{{ __('Your Email') }}</label>
-
-                                                                    <input type="email" id="email"
-                                                                        class="form-control @error('email') is-invalid @enderror"
-                                                                        name="email"
-                                                                        value="{{ $user->email ? $user->email : old('email') }}">
-
-                                                                    @error('email')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
+                                                            <input type="text" id="name" name="name"
+                                                                class="form-control @error('name') is-invalid @enderror"
+                                                                value="{{ old('name', $user->name) }}">
+                                                            @error('name')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
 
 
 
+                                                        <div class="col-12">
+                                                            <label class="form-label text-primary" for="email">البريد
+                                                                الالكتروني</label>
 
-                                                            <div class="d-flex flex-row align-items-center mb-4">
-                                                                <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                                                <div class="form-outline flex-fill mb-0">
-                                                                    <label class="form-label"
-                                                                        for="phone_number">{{ __('Phone Number') }}</label>
-                                                                    <input type="number" id="phone_number"
-                                                                        name="phone_number"
-                                                                        class="form-control
+                                                            <input type="email" id="email"
+                                                                class="form-control @error('email') is-invalid @enderror"
+                                                                name="email"
+                                                                value="{{ old('email', $user->email) }}">
+
+                                                            @error('email')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+
+
+                                                        <div class="col-12">
+                                                            <label class="form-label text-primary" for="password">كلمة
+                                                                السر</label>
+                                                            <input type="password" id="password" name="password"
+                                                                class="form-control @error('password') is-invalid @enderror"
+                                                                autocomplete="new-password">
+                                                            @error('password')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+
+
+                                                        <div class="col-12">
+                                                            <label class="form-label text-primary"
+                                                                for="password_confirmation">تأكيد كلمة
+                                                                السر</label>
+                                                            <input type="password" name="password_confirmation"
+                                                                id="password_confirmation"
+                                                                class="form-control @error('password_confirmation') is-invalid @enderror" />
+                                                            @error('password_confirmation')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+
+
+
+
+                                                        <div class="col-12">
+                                                            <label class="form-label text-primary"
+                                                                for="phone_number">رقم التليفون</label>
+                                                            <input type="number" id="phone_number"
+                                                                name="phone_number"
+                                                                class="form-control
                                                 @error('phone_number') is-invalid @enderror"
-                                                                        value="{{ $user->phone_number ? $user->phone_number : old('phone_number') }}">
-                                                                    @error('phone_number')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                    @enderror
-                                                                </div>
+                                                                value="{{ old('phone_number', '0' . $user->phone_number) }}">
+                                                            @error('phone_number')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+
+
+
+
+                                                        <div class="col-12">
+                                                            <label class="form-label text-primary"
+                                                                for="profile_pic">رفع الصورة الشخصية</label>
+                                                            <input
+                                                                class="form-control @error('profile_pic') is-invalid @enderror"
+                                                                type="file" name="profile_pic" id="profile_pic" />
+                                                            @error('profile_pic')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                            <div class="small text-muted mt-2">
+                                                                ثم برفع صورتك الشخصية على أن لا تتجاوز 5 ميجا بايت
                                                             </div>
-
-
-
-                                                            <div class="d-flex flex-row align-items-center mb-4">
-                                                                <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                                                                <div class="form-outline flex-fill mb-0">
-                                                                    <img class="card-img-top"
-                                                                        src="{{ asset('profilepic') . '/' . $user->profile_pic }}"
-                                                                        alt="">
-
-
-                                                                    <label class="form-label"
-                                                                        for="profile_pic">{{ __('Upload Profile Picture') }}
-                                                                    </label>
-                                                                    <input
-                                                                        class="form-control @error('profile_pic') is-invalid @enderror"
-                                                                        type="file" name="profile_pic"
-                                                                        id="profile_pic"
-                                                                        value="{{ $user->profile_pic ? asset('profilepic') . '/' . $user->profile_pic : old('profile_pic') }}" />
-                                                                    @error('profile_pic')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                    @enderror
-                                                                    <div class="small text-muted mt-2">
-                                                                        {{ __('Upload your profile picture. Max file size 50 MB') }}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                        </div>
 
 
 
 
 
-
-
-
-                                                            <div class="d-flex flex-row align-items-center mb-4">
-                                                                <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-
-                                                                <div class="form-outline flex-fill mb-0">
-                                                                    <img class="card-img-top"
-                                                                        src="{{ asset('nationalidpic') . '/' . $user->national_id_first_pic }}"
-                                                                        alt="">
-                                                                    <label class="form-label"
-                                                                        for="national_id_pic">{{ __('Upload National ID') }}
-                                                                    </label>
-                                                                    <input
-                                                                        class="form-control @error('national_id_first_pic') is-invalid @enderror"
-                                                                        type="file" name="national_id_first_pic"
-                                                                        id="national_id_first_pic"
-                                                                        value="{{ $user->national_id_first_pic ? asset('nationalidpic') . '/' . $user->national_id_first_pic : old('national_id_first_pic') }}" />
-                                                                    @error('national_id_first_pic')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                    @enderror
-
-                                                                    <div class="form-outline flex-fill mb-0">
-                                                                        <img class="card-img-top"
-                                                                            src="{{ asset('nationalidpic') . '/' . $user->national_id_second_pic }}"
-                                                                            alt="">
-                                                                        <input
-                                                                            class="form-control @error('national_id_second_pic') is-invalid @enderror"
-                                                                            type="file"
-                                                                            name="national_id_second_pic"
-                                                                            id="national_id_second_pic"
-                                                                            value="{{ $user->national_id_second_pic ? asset('nationalidpic') . '/' . $user->national_id_second_pic : old('national_id_second_pic') }}" />
-                                                                        @error('national_id_second_pic')
-                                                                            <span class="invalid-feedback" role="alert">
-                                                                                <strong>{{ $message }}</strong>
-                                                                            </span>
-                                                                        @enderror
-                                                                        <div class="small text-muted mt-2">
-                                                                            {{ __('Upload your National ID picture. Max file size 50 MB') }}
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <h6 class="mb-0 me-4">{{ __('city') }}</h6>
-
-                                                            <div class="d-flex flex-row align-items-center mb-4">
-                                                                <div class="form-check form-check-inline mb-0 me-4">
-                                                                    <select class="form-select" name="city"
-                                                                        value="{{ $user->city ? $user->city : old('city') }}">
-
-                                                                        <option value="cairo">Cairo</option>
-                                                                        <option value="minya">Minya</option>
-                                                                        <option value="alex">Alex</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <h6 class="mb-0 me-4">{{ __('Gender') }}</h6>
-
-                                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                        <div class="col-12 mt-3">
+                                                            <label class="form-label text-primary"
+                                                                for="genderr">النوع</label>
+                                                            <div class="col-12">
                                                                 <div class="form-check form-check-inline mb-0 me-4">
                                                                     <input
                                                                         class="form-check-input @error('gender') is-invalid @enderror"
@@ -295,8 +249,9 @@
                                                                         id="femaleGender" value="female"
                                                                         {{ $user->gender == 'female' ? 'checked' : '' }} />
                                                                     <label class="form-check-label"
-                                                                        for="femaleGender">{{ __('Female') }}</label>
+                                                                        for="femaleGender">أنثى</label>
                                                                 </div>
+
                                                                 <div class="form-check form-check-inline mb-0 me-4">
                                                                     <input
                                                                         class="form-check-input @error('gender') is-invalid @enderror"
@@ -304,19 +259,70 @@
                                                                         value="male"
                                                                         {{ $user->gender == 'male' ? 'checked' : '' }} />
                                                                     <label class="form-check-label"
-                                                                        for="maleGender">{{ __('Male') }}</label>
+                                                                        for="maleGender">ذكر</label>
                                                                 </div>
+
                                                                 @error('gender')
                                                                     <span class="invalid-feedback" role="alert">
                                                                         <strong>{{ $message }}</strong>
                                                                     </span>
                                                                 @enderror
                                                             </div>
+                                                        </div>
+
+                                                        <div class="col-12 mt-3">
+                                                            <label class="form-label text-primary"
+                                                                for="city">المدينه</label>
 
 
-                                                            <h6 class="mb-0 me-4">{{ __('Role') }}</h6>
+                                                            <select class="form-control form-select py-2"
+                                                                name="city"
+                                                                value="{{ $user->city ? $user->city : old('city') }} ">
+                                                                <option disabled selected>City</option>
+                                                                <option value="cairo">Cairo</option>
+                                                                <option value="minya">Minya</option>
+                                                                <option value="alex">Alex</option>
+                                                            </select>
+                                                        </div>
 
-                                                            <div class="d-flex flex-row align-items-center mb-4">
+
+
+                                                        <div class="col-12 mt-3">
+                                                            <label class="form-label text-primary" for="nationalid">قم
+                                                                برفع وجهي بطاقة الرقم
+                                                                القزمي</label>
+                                                            <input
+                                                                class="form-control @error('national_id_first_pic') is-invalid @enderror"
+                                                                type="file" name="national_id_first_pic"
+                                                                id="national_id_first_pic" />
+                                                            @error('national_id_first_pic')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+
+                                                            <div class="form-outline flex-fill mb-0">
+                                                                <input
+                                                                    class="form-control @error('national_id_second_pic') is-invalid @enderror"
+                                                                    type="file" name="national_id_second_pic"
+                                                                    id="national_id_second_pic" />
+                                                                @error('national_id_second_pic')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                                <div class="small text-muted mt-2">
+                                                                    قم برفع بطاقة الرقم القومي على أن لا تتجاوز الصورة
+                                                                    الواحده 5 ميجا بايت
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="col-12 mt-3">
+                                                            <label class="form-label text-primary" for="role">نوع
+                                                                المستخدم</label>
+                                                            <div class="col-12">
                                                                 <div class="form-check form-check-inline mb-0 me-4">
                                                                     <input
                                                                         class="form-check-input @error('role') is-invalid @enderror"
@@ -324,7 +330,7 @@
                                                                         id="femaleGender" value="vendor"
                                                                         {{ $user->role == 'vendor' ? 'checked' : '' }} />
                                                                     <label class="form-check-label"
-                                                                        for="femaleGender">{{ __('vendor') }}</label>
+                                                                        for="femaleGender">تاجر</label>
                                                                 </div>
                                                                 <div class="form-check form-check-inline mb-0 me-4">
                                                                     <input
@@ -333,7 +339,7 @@
                                                                         value="delivery"
                                                                         {{ $user->role == 'delivery' ? 'checked' : '' }} />
                                                                     <label class="form-check-label"
-                                                                        for="maleGender">{{ __('delivery') }}</label>
+                                                                        for="maleGender">مندوب شحن</label>
                                                                 </div>
                                                                 @error('role')
                                                                     <span class="invalid-feedback" role="alert">
@@ -341,10 +347,12 @@
                                                                     </span>
                                                                 @enderror
                                                             </div>
-                                                            <br><br>
-                                                            <h6 class="mb-0 me-4">{{ __('Admin') }}</h6>
+                                                        </div>
 
-                                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                        <div class="col-12 mt-3">
+                                                            <label class="form-label text-primary"
+                                                                for="role">أدمن</label>
+                                                            <div class="col-12">
                                                                 <div class="form-check form-check-inline mb-0 me-4">
                                                                     <input
                                                                         class="form-check-input @error('is_admin') is-invalid @enderror"
@@ -352,8 +360,9 @@
                                                                         id="femaleGender" value="0"
                                                                         {{ $user->is_admin == '0' ? 'checked' : '' }} />
                                                                     <label class="form-check-label"
-                                                                        for="femaleGender">{{ __('No') }}</label>
+                                                                        for="femaleGender">لا</label>
                                                                 </div>
+
                                                                 <div class="form-check form-check-inline mb-0 me-4">
                                                                     <input
                                                                         class="form-check-input @error('gender') is-invalid @enderror"
@@ -361,7 +370,7 @@
                                                                         id="maleGender" value="1"
                                                                         {{ $user->is_admin == '1' ? 'checked' : '' }} />
                                                                     <label class="form-check-label"
-                                                                        for="maleGender">{{ __('Yes') }}</label>
+                                                                        for="maleGender">نعم</label>
                                                                 </div>
                                                                 @error('is_admin')
                                                                     <span class="invalid-feedback" role="alert">
@@ -369,21 +378,23 @@
                                                                     </span>
                                                                 @enderror
                                                             </div>
-
-
-
-                                                            <div class="d-flex flex-row align-items-center mb-4">
-                                                                <div class="form-check form-check-inline mb-0 me-4">
-
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">اغلاق</button>
-                                                                    <button type="submit"
-                                                                        class="btn btn-success">حفظ</button>
-
-                                                                </div>
-                                                            </div>
-                                                            <br><br>
                                                         </div>
+                                                    </div>
+
+
+
+                                                    <div class="d-flex flex-row align-items-center mb-4">
+                                                        <div class="form-check form-check-inline mb-0 me-4">
+
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">اغلاق</button>
+                                                            <button type="submit"
+                                                                class="btn btn-success">حفظ</button>
+
+                                                        </div>
+                                                    </div>
+                                                    <br><br>
+                                                </div>
 
                                             </form>
                                         </div>
@@ -652,4 +663,3 @@
 @section('js')
 
 @endsection
-

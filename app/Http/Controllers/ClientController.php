@@ -14,12 +14,18 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //  $user = Auth::user();
         //  $clients = Client::all()->where('user_id', $user->id);
 
         $clients = auth()->user()->clients;
+        if ($request['search']) {
+            $searchedClients = $clients->where('name', $request['search']);
+            return view('clients.index', [
+                'clients' => $searchedClients,
+            ]);
+        }
         return view("clients.index", ["clients" => $clients]);
     }
 

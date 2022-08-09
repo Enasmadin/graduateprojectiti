@@ -14,7 +14,7 @@ class CategoryContoller extends Controller
      */
     public function index()
     {
-        $categories = Category::simplePaginate(10);
+        $categories = Category::latest()->simplePaginate(5);
         // $categories = Category::all();
 
         return view('admin.pages.categories.index', ["categories" => $categories]);
@@ -39,7 +39,7 @@ class CategoryContoller extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name" => 'required|max:100|alpha'
+            "name" => 'required|max:100'
         ]);
         $categories = new Category(request()->all());
         $categories->save();
@@ -78,7 +78,7 @@ class CategoryContoller extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            "name" => 'required|max:100|alpha'
+            "name" => 'required|max:100'
         ]);
 
         $category->name = $request['name'];

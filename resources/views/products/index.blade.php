@@ -8,8 +8,8 @@
         @else
             <div class="row">
                 <div class="col-sm-8 col-md-9">
-                    <form class="d-flex" role="search" type="get" action="{{ route('posts.index') }}">
-                        @csrf
+                    <form class="d-flex" role="search" type="get" action="{{ route('products.index') }}">
+
 
                         <input class="form-control me-2" name="search" type="search" aria-label="Search">
 

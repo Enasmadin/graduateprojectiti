@@ -150,23 +150,25 @@
 
                 <div class="row text-center my-3">
 
-                    <div class="col">
-                        <p>{{ $user->email }}
-                            <i class="fas fa-envelope"></i>
-                        </p>
+                    <div class="col-sm-12 col-md-4 my-sm-1">
+                        <i class="fas fa-envelope"></i>
+                        <span>
+                            {{ $user->email }}
+                        </span>
                     </div>
 
-                    <div class="col">
-                        <p>{{ $user->city }}
-                            <i class="fas fa-house-user"></i>
-                        </p>
+                    <div class="col-sm-12 col-md-4 my-sm-1">
+                        <i class="fas fa-house-user"></i>
+                        <span>
+                            {{ $user->city }}
+                        </span>
                     </div>
 
-                    <div class="col">
-                        <p>
+                    <div class="col-sm-12 col-md-4 my-sm-1">
+                        <i class="fas fa-phone"></i>
+                        <span>
                             {{ $user->phone_number }}
-                            <i class="fas fa-phone"></i>
-                        </p>
+                        </span>
                     </div>
                 </div>
 
@@ -184,7 +186,7 @@
 
 
             <div class="row mb-5">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     @foreach ($user->posts as $post)
                         <div class="col">
                             <div class="card shadow-sm my-4 h-100">
@@ -204,6 +206,26 @@
                                             {{ __('عرض') }}
                                         </a>
                                     </div>
+                                    @auth
+
+                                        @if (auth()->user()->id === $post->user_id)
+                                            <a class="btn btn-outline-primary" href="{{ route('posts.edit', $post->id) }}">
+                                                {{ __('تعديل') }}
+                                            </a>
+                                            <a class="btn btn-outline-danger" href="{{ route('posts.destroy', $post->id) }}"
+                                                onclick="event.preventDefault();
+                                    document.getElementById('delete{{ $post->id }}').submit();">
+
+                                                حذف
+                                            </a>
+                                            <form id="delete{{ $post->id }}"
+                                                action="{{ route('posts.destroy', $post->id) }}" method="POST"
+                                                class="d-none">
+                                                @method('DELETE')
+                                                @csrf
+                                            </form>
+                                        @endif
+                                    @endauth
                                 </div>
                             </div>
                         </div>

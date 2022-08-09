@@ -79,7 +79,7 @@ class ProductController extends Controller
             'name' => ['required', 'min:3', 'max:255'],
             'price' => ['required', 'numeric', 'min:1'],
             'weight' => ['nullable', 'numeric', 'min:1'],
-            'quantity' => ['required', 'numeric', 'min:1'],
+            'quantity' => ['nullable', 'numeric', 'min:1'],
             'category_id' => ['required'],
             'product_pic' => ['required', 'mimes:jpg,png,jpeg,max:5048'],
         ]);
@@ -90,7 +90,10 @@ class ProductController extends Controller
         $productPic->move(public_path('productpic'), $productPicName);
 
 
-        $product = new Product($request->except('product_pic'));
+        $product = new Product($request->except('product_pic', 'quantity'));
+        if ($request->quantity) {
+            $product->quantity = $request->quantity;
+        }
         $product->user_id = Auth::user()->id;
         $product->product_pic = $productPicName;
         $product->save();
