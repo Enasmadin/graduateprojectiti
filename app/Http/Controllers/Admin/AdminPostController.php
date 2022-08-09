@@ -104,8 +104,8 @@ class AdminPostController extends Controller
             'description' => ['required', 'max:255'],
             'from' => ['required', 'max:255'],
             'to' => ['required', 'max:255'],
-            'deliver_price' => ['required', 'numeric'],
-            'product_id' => ['required', 'numeric'],
+            'deliver_price' => ['required', 'numeric']
+
         ]);
 
         $post->update($request->all());

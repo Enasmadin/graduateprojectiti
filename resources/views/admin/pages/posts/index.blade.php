@@ -167,20 +167,6 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                     @enderror
                 </div>
 
-                <div class="mb-3">
-                    <label for="product_id" class="form-label">{{ __('المنتج') }}</label>
-                    <select name="product_id" id="product_id">
-                        {{-- <option value="0">{{ __('Choose Product') }}</option> --}}
-                        @foreach ($post->user->products as $product)
-                            <option value="{{ old('id', $product->id) }}"
-                                {{ $product->id == $post->product_id ? 'selected' : '' }}>{{ $product->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    {{-- @error('product_id')
-                        <div class="aler alert-danger p-2 mt-1 rounded-1">{{ $message }}</div>
-                    @enderror --}}
-                </div>
 
                 <button type="submit" class="btn btn-primary">{{ __('ارسال') }}</button>
             </form>
@@ -342,5 +328,8 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
     </div>
 </div>
 
+
+@endsection
+@section('js')
 
 @endsection

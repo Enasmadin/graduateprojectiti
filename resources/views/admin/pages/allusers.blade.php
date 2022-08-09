@@ -93,20 +93,18 @@
                                                 class="fa fa-edit"></i></button>
 
 
-                                        <form action="{{ route('admines.destroy', $user->id) }}" method="POST" style="width: 34px; height: 34px; margin:1px; display: inline-block;>
+                                        <form action="{{ route('admines.destroy', $user->id) }}" method="POST" style="width: 34px; height: 34px; margin:1px; display: inline-block;">
                                              @csrf
                                             @method('DELETE')
 
-                                            <button type="submit" class="btn btn-danger" ><i
-                                                    class="fa fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-danger" >
+                                            <i class="fa fa-trash"></i></button>
 
                                         </form>
 
                                     </td>
                                 </tr>
-                            </div>
-                            <div class="float-right">{{ $users->links() }}</div>
-                        </div>
+
 
 
                                 <!-- edit modal Grade -->

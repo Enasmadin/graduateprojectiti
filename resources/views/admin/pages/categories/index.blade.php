@@ -47,6 +47,17 @@
                     اضافة فئة
                 </button>
                 <br><br>
+
+@if ($categories->count() == 0)
+<div class="text-center col col-md-12">
+
+{{ __('لاتوجد  فئات ') }}
+
+</div>
+
+@else
+
+
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped table-bordered p-0">
                         <thead>
@@ -58,6 +69,7 @@
                                 <th>الإجراء</th>
                             </tr>
                         </thead>
+                        @endif
                         <tbody>
 
 
@@ -217,10 +229,6 @@
             </div>
         </div>
         <!-- finished -->
-    </div>
-    <!-- row closed -->
-    @endsection
-    @section('js')
-
-    @endsection
-
+        </div>
+        <!-- row closed -->
+        @endsection
