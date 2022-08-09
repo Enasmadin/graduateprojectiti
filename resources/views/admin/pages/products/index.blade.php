@@ -47,6 +47,16 @@
                     اضافة منتج
                 </button>
                 <br><br>
+
+@if ($products->count() == 0)
+<div class="text-center col col-md-12">
+
+{{ __('لاتوجد  منتجات ') }}
+
+</div>
+
+@else
+
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped table-bordered p-0">
                         <thead>
@@ -60,6 +70,7 @@
                                 <th>الإجراء</th>
                             </tr>
                         </thead>
+                        @endif
                         <tbody>
 
 
@@ -408,5 +419,7 @@
         </div>
     </div>
 
+    @endsection
+    @section('js')
 
-@endsection
+    @endsection

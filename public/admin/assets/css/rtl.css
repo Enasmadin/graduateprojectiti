@@ -19954,7 +19954,7 @@ button {
     outline: 0; }
 
 .button {
-  background: #84ba3f;
+  background: #17a2b8;
   padding: 10px 20px;
   font-size: 1rem;
   letter-spacing: 1px;
@@ -19965,7 +19965,7 @@ button {
   display: inline-block;
   border-radius: 3px;
   text-align: center;
-  border: 2px solid #84ba3f;
+  border: 2px solid #17a2b8;
   cursor: pointer;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;

@@ -47,6 +47,17 @@
                     اضافة فئة
                 </button>
                 <br><br>
+
+@if ($categories->count() == 0)
+<div class="text-center col col-md-12">
+
+{{ __('لاتوجد  فئات ') }}
+
+</div>
+
+@else
+
+
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped table-bordered p-0">
                         <thead>
@@ -58,6 +69,7 @@
                                 <th>الإجراء</th>
                             </tr>
                         </thead>
+                        @endif
                         <tbody>
 
 
@@ -69,11 +81,12 @@
                                     <td>{{ $category->created_at }}</td>
                                     <td>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                            data-target="#edit{{ $category->id }}" title="edit"><i
-                                                class="fa fa-edit"></i></button>
+                                            data-target="#edit{{ $category->id }}" title="edit" style="width: 34px; height: 34px; margin:1px; display: inline-block;">
+                                            <i
+                                                class="fa fa-edit" ></i></button>
 
 
-                                        <form action="{{ route('categories.destroy', $category->id) }}" method="post">
+                                        <form action="{{ route('categories.destroy', $category->id) }}" method="post" style="width: 34px; height: 34px; margin:1px; display: inline-block;">
                                             @method('DELETE')
                                             @csrf
 
@@ -216,10 +229,6 @@
             </div>
         </div>
         <!-- finished -->
-    </div>
-    <!-- row closed -->
-@endsection
-@section('js')
-    @toastr_js
-    @toastr_render
-@endsection
+        </div>
+        <!-- row closed -->
+        @endsection
