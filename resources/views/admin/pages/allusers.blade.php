@@ -89,22 +89,23 @@
 
                                     <td>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                            data-target="#edit{{ $user->id }}" title="edit"><i
+                                            data-target="#edit{{ $user->id }}" title="edit" style="width: 34px; height: 34px; margin:1px; display: inline-block;"><i
                                                 class="fa fa-edit"></i></button>
 
 
-                                        <form action="{{ route('admines.destroy', $user->id) }}" method="post">
+                                        <form action="{{ route('admines.destroy', $user->id) }}" method="POST" style="width: 34px; height: 34px; margin:1px; display: inline-block;">
+                                             @csrf
                                             @method('DELETE')
-                                            @csrf
 
-
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-danger" >
+                                            <i class="fa fa-trash"></i></button>
 
                                         </form>
 
                                     </td>
                                 </tr>
+
+
 
                                 <!-- edit modal Grade -->
                                 <div class="modal fade" id="edit{{ $user->id }}" tabindex="-1" role="dialog"
@@ -649,6 +650,6 @@
 <!-- row closed -->
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+
 @endsection
+

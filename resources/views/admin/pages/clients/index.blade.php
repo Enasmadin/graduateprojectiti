@@ -44,6 +44,15 @@
                     اضافة عميل
                 </button>
                 <br><br>
+
+@if ($clients->count() == 0)
+<div class="text-center col col-md-12">
+
+{{ __('لا يوجد عملاء ') }}
+
+</div>
+
+@else
                 <div class="table-responsive">
                     <table id="datatable" class="table table-striped table-bordered p-0">
                         <thead>
@@ -56,6 +65,7 @@
                                 <th>الإجراء</th>
                             </tr>
                         </thead>
+                        @endif
                         <tbody>
 
 
@@ -272,14 +282,14 @@
                         <button type="submit" class="btn btn-success">حفظ</button>
                     </div>
                 </form>
-            </div>
+
         </div>
     </div>
-
+</div>
+<!-- finished -->
+</div>
+<!-- row closed -->
+@endsection
+@section('js')
 
 @endsection
-<!-- delete modal -->
-<!-- Button trigger modal -->
-
-<!-- here -->
-{{--

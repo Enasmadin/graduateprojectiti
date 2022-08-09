@@ -38,6 +38,14 @@
                 @endif
 
                 <!-- end errors -->
+                @if ($users->count() == 0)
+                <div class="text-center col col-md-12">
+
+              {{ __('لايوجد مستخدمين جدد') }}
+
+                </div>
+
+            @else
 
 
                 <br><br>
@@ -58,6 +66,7 @@
                                 <th>الإجراء</th>
                             </tr>
                         </thead>
+                        @endif
                         <tbody>
 
 
@@ -90,7 +99,7 @@
                                             @method('PUT')
                                             @csrf
                                             <label>الحالة</label>
-                                            <select class="form-control" name="status">
+                                            <select  name="status" >
 
                                                 <option value="accepted">قبول</option>
                                                 <option value="refused">رفض</option>
@@ -116,6 +125,7 @@
         <!-- Button trigger modal -->
 
         <!-- Modal -->
+
 
     </div>
 </div>
